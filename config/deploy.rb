@@ -3,7 +3,7 @@ lock "3.7.0"
 
 set :application, "trade-note"
 set :repo_url, "git@bitbucket.org:kunotomohiro/trade_note.git"
-set :deploy_to, "/tradenote/htdocs"
+set :deploy_to, "~/htdocs"
 
 namespace :deploy do
   desc "Make sure local git is in sync with remote."
