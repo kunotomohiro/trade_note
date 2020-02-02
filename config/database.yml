@@ -19,7 +19,7 @@ default: &default
 
 development:
   <<: *default
-  database: trade_note_development
+  database: trade_note
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: trade_note_production
+  database: trade_note
   username: trade_note
   password: <%= ENV['TRADE_NOTE_DATABASE_PASSWORD'] %>
