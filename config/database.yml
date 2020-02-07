@@ -48,8 +48,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: mysql2
+  encoding: utf8
   database: trade_note
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV['TRADE_NOTE_DATABASE_USERNAME'] %>
   password: <%= ENV['TRADE_NOTE_DATABASE_PASSWORD'] %>
   host: <%= ENV['TRADE_NOTE_DATABASE_HOST'] %>
+  socket: /var/lib/mysql/mysql.sock
