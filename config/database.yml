@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: trade_note
-  username: trade_note
+  username: <%= ENV['TRADE_NOTE_DATABASE_USERNAME'] %>
   password: <%= ENV['TRADE_NOTE_DATABASE_PASSWORD'] %>
+  host: <%= ENV['TRADE_NOTE_DATABASE_HOST'] %>
