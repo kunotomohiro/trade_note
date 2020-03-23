@@ -1,0 +1,5 @@
+<%= form_with model: [:user, @user_profile], url: user_user_profile_path, local: true  do |f| %>
+  <%= f.text_field :nickname %>
+  <%= f.file_field :avatar %>
+  <%= f.submit %>
+<% end %>
