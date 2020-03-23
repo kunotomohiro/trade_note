@@ -1,2 +1,3 @@
 <%= current_user.user_profile.nickname %>
 <%= image_tag current_user.user_profile.avatar %>
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

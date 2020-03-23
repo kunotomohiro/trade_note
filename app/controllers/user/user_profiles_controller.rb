@@ -6,8 +6,11 @@ class User::UserProfilesController < User::ApplicationController
 
   def create
     @user_profile = current_user.build_user_profile(user_profile_params)
-    @user_profile.save
-    redirect_to user_trades_path
+    if @user_profile.save
+      redirect_to user_trades_path
+    else
+      render "new"
+    end
   end
 
   def edit
@@ -15,8 +18,11 @@ class User::UserProfilesController < User::ApplicationController
   end
 
   def update
-    current_user.user_profile.update(user_profile_params)
-    redirect_to user_trades_path
+    if current_user.user_profile.update(user_profile_params)
+      redirect_to user_trades_path
+    else
+      render "edit"
+    end
   end
 
   private

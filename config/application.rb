@@ -1,7 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
-
+require 'sprockets/railtie'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -17,6 +17,7 @@ module TradeNote
       g.test_framework false
       config.time_zone = 'Tokyo'
       config.active_record.default_timezone = :local
+      config.serve_static_assets = true
     end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

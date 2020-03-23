@@ -1,26 +1,36 @@
-<h2>Log in</h2>
+<div class="l-devise-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 col-sm-6 col-md-5 col-lg-4 text-center mx-auto">
+        <div class="l-devise-form__wrapper">
+          <h3 class="mb-4">ログイン</h3>
+          <div class="form-group">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <div class="field mb-3 d-flex">
+                <%# <i class="fas fa-envelope"></i> %>
+                <%= f.email_field :email, autofocus: "autofocus", autocomplete: "email", class: "form-control", placeholder: "example@gmail.com" %>
+              </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+              <div class="field d-flex">
+                <%# <i class="fa fa-lock"></i> %>
+                <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "パスワード" %>
+              </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+              <% if devise_mapping.rememberable? %>
+                <div class="field text-left mt-2">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :ログインを記憶 %>
+                </div>
+              <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+              <div class="actions">
+                <%= f.submit "ログイン", class: "btn l-devise-form__submit" %>
+              </div>
+            <% end %>
+          <div>
+        <div>
+        <%= render "users/shared/links" %>
+      <div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
