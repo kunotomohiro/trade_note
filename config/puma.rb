@@ -55,3 +55,21 @@ environment ENV['RAILS_ENV'] || 'development'
 # process behavior so workers use less memory.
 #
 # preload_app!
+
+if ENV['RAILS_ENV'] == "production"
+  before_fork do
+    PumaWorkerKiller.config do |config|
+      config.ram           = 1024 # mb
+      config.frequency     = 5 * 60    # seconds
+      config.percent_usage = 0.90
+      config.rolling_restart_frequency = 24 * 3600 # 12 hours in seconds, or 12.hours if using Rails
+      config.reaper_status_logs = true # setting this to false will not log lines like:
+      # PumaWorkerKiller: Consuming 54.34765625 mb with master and 2 workers.
+    end
+    PumaWorkerKiller.start
+    ActiveRecord::Base.connection_pool.disconnect! if defined?(ActiveRecord)
+  end
+  on_worker_boot do
+    ActiveRecord::Base.establish_connection if defined?(ActiveRecord)
+  end
+end
