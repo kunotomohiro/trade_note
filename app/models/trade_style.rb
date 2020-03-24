@@ -1,0 +1,2 @@
+class TradeStyle < ApplicationRecord
+end

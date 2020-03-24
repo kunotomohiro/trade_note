@@ -1,0 +1,2 @@
+class TradeCategory < ApplicationRecord
+end
