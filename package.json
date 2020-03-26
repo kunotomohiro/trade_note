@@ -9,6 +9,7 @@
     "@rails/webpacker": "^4.2.0",
     "axios": "^0.19.2",
     "bootstrap": "4.3.1",
+    "element-ui": "^2.13.0",
     "gulp": "^4.0.2",
     "gulp-sass": "^4.0.2",
     "import-glob-loader": "^1.1.0",
