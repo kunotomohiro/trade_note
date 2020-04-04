@@ -15,3 +15,5 @@
 end
 
 require Rails.root.to_s + "/db/seeds/user_profile.rb"
+require Rails.root.to_s + "/db/seeds/trade_category.rb"
+require Rails.root.to_s + "/db/seeds/trade_style.rb"

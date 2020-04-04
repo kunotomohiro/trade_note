@@ -1,3 +1,3 @@
 class TradeStyle < ApplicationRecord
-  belongs_to :trade
+  has_many :trades
 end

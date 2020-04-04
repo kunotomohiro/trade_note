@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 2020_03_24_192938) do
     t.boolean "result", default: false, null: false
     t.float "pips", default: 0.0, null: false
     t.text "content"
-    t.time "entry_time"
-    t.time "exit_time"
+    t.datetime "entry_time"
+    t.datetime "exit_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["trade_category_id"], name: "index_trades_on_trade_category_id"

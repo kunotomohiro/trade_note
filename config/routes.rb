@@ -9,10 +9,23 @@ Rails.application.routes.draw do
     root :to => "users/sessions#new"
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
+
   resources :static_pages
+
   namespace :user do
     resource :user_profile
     resources :trades do
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      authenticate :user do
+        namespace :user do
+          resources :trades, only: [:create, :update, :destroy]
+        end
+      end
+      resource  :initialisations, only: :show
     end
   end
 end

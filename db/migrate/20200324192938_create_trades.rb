@@ -7,8 +7,8 @@ class CreateTrades < ActiveRecord::Migration[6.0]
       t.boolean    :result, null: false, default: false
       t.float      :pips, null: false, default: 0
       t.text       :content
-      t.time       :entry_time
-      t.time       :exit_time
+      t.datetime   :entry_time
+      t.datetime   :exit_time
       t.timestamps
     end
   end
