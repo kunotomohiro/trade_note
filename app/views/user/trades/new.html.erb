@@ -1,9 +1,9 @@
-<div class="container" id="trade">
+<div class="c-trade-form" id="trade">
   <div class="row">
     <div class="col-6 p-trade mx-auto">
       <div class="row">
         <div class="col-12">
-          <label style="display: block">トレードスタイル</label>
+          <label>トレードスタイル</label>
           <el-select v-model="trade.trade_style_id" placeholder="トレードスタイル">
             <el-option
               v-for="trade_style in trade_styles"
@@ -15,7 +15,7 @@
           </el-select>
         </div>
         <div class="col-12">
-          <label style="display: block">カテゴリー</label>
+          <label>カテゴリー</label>
           <el-select v-model="trade.trade_category_id" placeholder="トレードカテゴリ">
             <el-option
               v-for="trade_category in trade_categories"
@@ -27,7 +27,7 @@
           </el-select>
         </div>
         <div class="col-12">
-          <label style="display: block">エントリー日時と決済日時</label>
+          <label>エントリー日時と決済日時</label>
           <el-date-picker v-model="trade.entry_time" type="datetime"
             placeholder="Pick a day"
             format="yyyy/MM/dd HH:mm"
@@ -41,11 +41,11 @@
           </el-date-picker>
         </div>
         <div class="col-12">
-          <label style="display: block">Pips</label>
+          <label>Pips</label>
           <el-input placeholder="pips" v-model="trade.pips"></el-input>
         </div>
         <div class="col-12">
-          <label style="display: block">結果</label>
+          <label>結果</label>
           <el-select placeholder="result" v-model="trade.result">
             <el-option
               v-for="result in result"
@@ -56,14 +56,14 @@
           </el-select>
         </div>
         <div class="col-12">
-          <label style="display: block">画像</label>
+          <label>画像</label>
           <input name="uploadedImage" type="file" ref="file" accept="image/*" @change="selectImage">
         </div>
         <div class="col-12 text-center">
           <textarea placeholder="メモ" v-model="trade.content"></textarea>
         </div>
         <div class="col-12 text-center">
-          <button class="btn l-devise-form__submit" @click="submit" enctype="multipart/form-data">
+          <button class="btn c-devise-form__submit" @click="submit" enctype="multipart/form-data">
             登録する
           </button>
         </div>

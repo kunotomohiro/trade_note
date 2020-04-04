@@ -1,3 +1,7 @@
-<%= image_tag current_user.user_profile.avatar %>
-<%= current_user.user_profile.nickname %>
+<div class="row">
+  <div class="col-12">
+    <%= image_tag current_user.user_profile.avatar %>
+    <%= current_user.user_profile.nickname %>
+  </div>
+</div>
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

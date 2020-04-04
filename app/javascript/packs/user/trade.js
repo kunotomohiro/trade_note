@@ -48,6 +48,12 @@ window.onload = function(){
         .send({trade: this.trade})
         .end(function(error, data){
           if (data.created) {
+            Vue.notify({
+              group: 'information',
+              type: 'error',
+              title: '登録に失敗しました',
+              text: '',
+            })
             location.replace('/')
           } else {
             Vue.notify({

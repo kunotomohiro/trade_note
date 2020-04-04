@@ -1,11 +1,15 @@
-.l-login-form {
+.c-trade-form {
+  label {
+    display: block;
+  }
+}
+
+.c-devise-form {
   &__wrapper{
     background-color: #F7F7F7;
-    /* just in case there no content*/
     padding: 30px;
     margin: 0 auto 25px;
     margin-top: 150px;
-    /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     border-radius: 2px;
