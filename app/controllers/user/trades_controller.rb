@@ -2,7 +2,7 @@ class User::TradesController < User::ApplicationController
   before_action :set_trade_params, only: [:show, :edit]
 
   def index
-    @trades = current_user.trades.all
+    @trades = current_user.trades.all.order(id: :desc)
   end
 
   def new

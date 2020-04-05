@@ -1,7 +1,47 @@
 <div class="row">
-  <div class="col-12">
-    <%= image_tag current_user.user_profile.avatar %>
-    <%= current_user.user_profile.nickname %>
+  <div class="col-12 p-trade mt-5">
+    <div class="row">
+      <%= render "shared/user/left_side_bar" %>
+      <div class="col-12 col-lg-9">
+        <div class="row">
+          <% if @trades.present? %>
+            <% @trades.each do |trade| %>
+              <div class="col-7 col-sm-5 p-trade__card mb-5">
+                <%= link_to user_trade_path(trade) do %>
+                  <div>
+                    <%= image_tag trade.image, class: "p-trade__card-image" %>
+                  </div>
+                  <div class="p-trade__card-content">
+                    <div>
+                      <p>カテゴリー： <%= trade.trade_category.name %></p>
+                    </div>
+                    <div>
+                      <p>スタイル： <%= trade.trade_style.name %></p>
+                    </div>
+                    <div>
+                      <p>Pips： <%= trade.pips %></p>
+                    </div>
+                    <div>
+                      <p>エントリー： <%= trade.entry_time.strftime("%Y年 %m月%d日") %></p>
+                    </div>
+                    <div>
+                      <p>決済： <%= trade.exit_time.strftime("%Y年 %m月%d日") %></p>
+                    </div>
+                    <div>
+                      <p>結果： <%= trade.result %></p>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="col-12 text-center">
+              <p><span class="text-danger">＊トレードの記録がありません。早速登録してみましょう！</span></p>
+              <%= link_to "トレードの記録を残す", new_user_trade_path, class: "btn c-devise-form__submit w-50" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
