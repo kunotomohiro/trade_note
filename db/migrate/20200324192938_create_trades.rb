@@ -4,7 +4,7 @@ class CreateTrades < ActiveRecord::Migration[6.0]
       t.references :user, foreign_key: true
       t.references :trade_style, foreign_key: true
       t.references :trade_category, foreign_key: true
-      t.boolean    :result, null: false, default: false
+      t.integer    :result, null: false, default: 0
       t.float      :pips, null: false, default: 0
       t.text       :content
       t.datetime   :entry_time

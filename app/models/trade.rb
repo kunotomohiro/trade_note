@@ -4,7 +4,7 @@ class Trade < ApplicationRecord
   belongs_to :trade_category
   has_one_attached :image
 
-  enum result:{ "勝": 1, "負": 0 }
+  enum result: { "資産増": 0, "変化なし": 1,"資産減": 2 }
 
   def base64upload(file)
 
@@ -19,5 +19,6 @@ class Trade < ApplicationRecord
     image.detach if image.attached?
     image.attach(io: File.open("#{Rails.root}/tmp/#{filename}"), filename: filename)
     FileUtils.rm("#{Rails.root}/tmp/#{filename}")
+    
   end
 end

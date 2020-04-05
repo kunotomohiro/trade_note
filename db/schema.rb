@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_03_24_192938) do
     t.bigint "user_id"
     t.bigint "trade_style_id"
     t.bigint "trade_category_id"
-    t.boolean "result", default: false, null: false
+    t.integer "result", default: 0, null: false
     t.float "pips", default: 0.0, null: false
     t.text "content"
     t.datetime "entry_time"

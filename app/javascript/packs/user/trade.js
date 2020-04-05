@@ -22,8 +22,9 @@ window.onload = function(){
         pips: "",
         user_id: "",
         image: "",
+        result: "資産増"
       },
-      result: [],
+      results: [],
       trade_styles: [],
       trade_categories: []
     },
@@ -35,7 +36,7 @@ window.onload = function(){
       .end(function(error, data){
         trade.$data.trade_styles     = data.body.trade_styles
         trade.$data.trade_categories = data.body.trade_categories
-        trade.$data.result           = data.body.result
+        trade.$data.results          = data.body.results
         trade.$data.trade.user_id    = data.body.user_id
       })
     },
