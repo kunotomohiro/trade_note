@@ -28,10 +28,17 @@
           <p>メモ</p>
           <textarea><%= @trade.content %></textarea>
         </div>
-        <div>
-          <%= link_to edit_user_trade_path, class: "btn c-devise-form__submit mt-4" do %>
-            このトレードを編集する<i class="fas fa-chevron-right ml-3"></i>
-          <% end %>
+        <div class="row">
+          <div class="col-6">
+            <%= link_to user_trade_path, class: "btn p-trade__card__delete-btn mt-4", method: :delete, data: { confirm: "本当に削除しますか？" }  do %>
+              削除
+            <% end %>
+          </div>
+          <div class="col-6">
+            <%= link_to edit_user_trade_path, class: "btn c-devise-form__submit-btn mt-4" do %>
+              編集
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

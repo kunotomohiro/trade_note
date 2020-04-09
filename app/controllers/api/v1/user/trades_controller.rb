@@ -41,10 +41,6 @@ class Api::V1::User::TradesController < User::ApplicationController
     end
   end
 
-  def destroy
-    
-  end
-
   private
 
   def set_trade_params

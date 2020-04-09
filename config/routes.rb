@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       authenticate :user do
         namespace :user do
-          resources :trades, only: [:index, :show, :edit, :create, :update, :destroy]
+          resources :trades, only: [:index, :show, :edit, :create, :update]
         end
       end
       resource  :initialisations, only: :show

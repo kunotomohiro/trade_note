@@ -28,6 +28,15 @@
       margin: 0 auto;
       margin-left: 30px;
     }
+    &__delete-btn {
+      background-color: $black;
+      color: $white;
+      width: 100%;
+      &:hover {
+        color: $white;
+        opacity: 0.8;
+      }
+    }
   }
   &__card-image {
     width: 100%;

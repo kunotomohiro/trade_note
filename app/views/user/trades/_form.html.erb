@@ -65,13 +65,13 @@
         </div>
         <% if current_page?(new_user_trade_path) %>
           <div class="col-12 text-center">
-            <button class="btn c-devise-form__submit" @click="submit" enctype="multipart/form-data">
+            <button class="btn c-devise-form__submit-btn" @click="submit" enctype="multipart/form-data">
               登録する
             </button>
           </div>
         <% else %>
           <div class="col-12 text-center">
-            <button class="btn c-devise-form__submit" @click="update(trade.id)" enctype="multipart/form-data">
+            <button class="btn c-devise-form__submit-btn" @click="update(trade.id)" enctype="multipart/form-data">
               トレードの記録を変更する
             </button>
           </div>

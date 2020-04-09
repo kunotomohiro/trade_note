@@ -1,5 +1,5 @@
 class User::TradesController < User::ApplicationController
-  before_action :set_trade_params, only: [:show, :edit]
+  before_action :set_trade_params, only: [:show, :edit, :destroy]
 
   def index
     @trades = current_user.trades.all.order(id: :desc)
@@ -15,6 +15,14 @@ class User::TradesController < User::ApplicationController
     respond_to do |format|
       format.html
       format.json { render :json => { trade: @trade } }
+    end
+  end
+
+  def destroy
+    if @trade.destroy
+      redirect_to user_trades_path
+    else
+      render "show"
     end
   end
 
