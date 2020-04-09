@@ -1,0 +1,39 @@
+<div class="mt-5" id="trade">
+  <div class="row">
+    <%= render "shared/user/left_side_bar" %>
+    <div class="col-8 col-lg-6 p-trade__card">
+      <div>
+        <%= image_tag @trade.image, class: "p-trade__card-image" %>
+      </div>
+      <div class="p-trade__card-content">
+        <div>
+          <p>カテゴリー： <%= @trade.trade_category.name %></p>
+        </div>
+        <div>
+          <p>スタイル： <%= @trade.trade_style.name %></p>
+        </div>
+        <div>
+          <p>Pips： <%= @trade.pips %></p>
+        </div>
+        <div>
+          <p>エントリー： <%= @trade.entry_time.strftime("%Y年 %m月%d日") %></p>
+        </div>
+        <div>
+          <p>決済： <%= @trade.exit_time.strftime("%Y年 %m月%d日") %></p>
+        </div>
+        <div>
+          <p>結果： <%= @trade.result %></p>
+        </div>
+        <div>
+          <p>メモ</p>
+          <textarea><%= @trade.content %></textarea>
+        </div>
+        <div>
+          <%= link_to edit_user_trade_path, class: "btn c-devise-form__submit mt-4" do %>
+            このトレードを編集する<i class="fas fa-chevron-right ml-3"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

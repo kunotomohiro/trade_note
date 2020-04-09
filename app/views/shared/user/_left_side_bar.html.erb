@@ -10,8 +10,12 @@
     <p>トレード</p>
   </div>
   <div class="text-center">
-    <%= link_to "トレード一覧", user_trades_path %><br>
-    <%= link_to "トレードを記録する", new_user_trade_path %>
+    <div>
+      <%= link_to "トレード一覧", user_trades_path %>
+    </div>
+    <div>
+      <%= link_to "トレードを記録する", new_user_trade_path %>
+    </div>
   </div>
   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 </div>
