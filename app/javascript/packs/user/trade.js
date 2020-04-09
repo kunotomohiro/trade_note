@@ -39,6 +39,14 @@ window.onload = function(){
         trade.$data.results          = data.body.results
         trade.$data.trade.user_id    = data.body.user_id
       })
+
+      superagent
+      .get(location.pathname + ".json")
+      .set('X-CSRF-Token', token)
+      .set('Accept', 'application/json')
+      .end(function(error, data){
+        trade.$data.trade = data.body.trade
+      })
     },
     methods: {
       submit() {
@@ -68,9 +76,9 @@ window.onload = function(){
       },
       selectImage: function(event){
         let files = event.target.files
-        this.createHostProfileImage(files[0]);
+        this.createTradeImage(files[0]);
       },
-      createHostProfileImage(file) {
+      createTradeImage(file) {
         let reader = new FileReader();
         reader.onload = (e) => {
          trade.$data.trade.image = e.target.result;
@@ -78,6 +86,32 @@ window.onload = function(){
        };
        reader.readAsDataURL(file);
       },
+      update(id) {
+        superagent
+        .put(`/api/v1/user/trades/${id}`)
+        .set('X-CSRF-Token', token)
+        .set('Accept', 'application/json')
+        .send({trade: this.trade})
+        .end(function(error, data){
+          if (data.created) {
+            Vue.notify({
+              group: 'information',
+              type: 'error',
+              title: '登録に失敗しました',
+              text: '',
+            })
+            location.href = ('/')
+          } else {
+            Vue.notify({
+              group: 'information',
+              type: 'error',
+              title: '登録に失敗しました',
+              text: '',
+            })
+            location.href = ('/')
+          }
+        })
+      }
     }
   })
 }

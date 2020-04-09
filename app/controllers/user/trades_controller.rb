@@ -11,7 +11,12 @@ class User::TradesController < User::ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    respond_to do |format|
+      format.html
+      format.json { render :json => { trade: @trade } }
+    end
+  end
 
   private
 
