@@ -59,8 +59,8 @@ window.onload = function(){
           if (data.created) {
             Vue.notify({
               group: 'information',
-              type: 'error',
-              title: '登録に失敗しました',
+              type: 'success',
+              title: '登録しました！',
               text: '',
             })
             location.replace('/')
@@ -96,16 +96,16 @@ window.onload = function(){
           if (data.created) {
             Vue.notify({
               group: 'information',
-              type: 'error',
-              title: '登録に失敗しました',
+              type: 'success',
+              title: '登録しました！',
               text: '',
             })
             location.href = ('/')
           } else {
             Vue.notify({
               group: 'information',
-              type: 'error',
-              title: '登録に失敗しました',
+              type: 'success',
+              title: '登録しました！',
               text: '',
             })
             location.href = ('/')
