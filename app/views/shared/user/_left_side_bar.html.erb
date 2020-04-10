@@ -1,6 +1,6 @@
 <div class="col-3 p-user-left-side-bar text-center d-none d-lg-block">
   <div>
-    <%= image_tag current_user.user_profile.avatar.variant(resize_to_fill:[200,200], crop:("140x140+0+0")).processed, class: "p-trade__avatar" %>
+    <%= image_tag current_user.user_profile.avatar, class: "p-trade__avatar" %>
   </div>
   <div class="mt-2 p-user-left-side-bar__user-name">
     <%= current_user.user_profile.nickname %>
