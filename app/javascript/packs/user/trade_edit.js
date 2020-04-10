@@ -30,17 +30,6 @@ window.onload = function(){
     },
     created: function() {
       superagent
-      .get(`/api/v1/initialisations.json`)
-      .set('X-CSRF-Token', token)
-      .set('Accept', 'application/json')
-      .end(function(error, data){
-        trade.$data.trade_styles     = data.body.trade_styles
-        trade.$data.trade_categories = data.body.trade_categories
-        trade.$data.results          = data.body.results
-        trade.$data.trade.user_id    = data.body.user_id
-      })
-
-      superagent
       .get(location.pathname + ".json")
       .set('X-CSRF-Token', token)
       .set('Accept', 'application/json')
@@ -49,31 +38,6 @@ window.onload = function(){
       })
     },
     methods: {
-      submit() {
-        superagent
-        .post(`/api/v1/user/trades`)
-        .set('X-CSRF-Token', token)
-        .set('Accept', 'application/json')
-        .send({trade: this.trade})
-        .end(function(error, data){
-          if (data.created) {
-            Vue.notify({
-              group: 'information',
-              type: 'success',
-              title: '登録しました！',
-              text: '',
-            })
-            location.replace('/')
-          } else {
-            Vue.notify({
-              group: 'information',
-              type: 'error',
-              title: '登録に失敗しました',
-              text: '',
-            })
-          }
-        })
-      },
       selectImage: function(event){
         let files = event.target.files
         this.createTradeImage(files[0]);
@@ -100,7 +64,7 @@ window.onload = function(){
               title: '登録しました！',
               text: '',
             })
-            location.href = ('/')
+            location.href = (`/user/trades/${id}`)
           } else {
             Vue.notify({
               group: 'information',
@@ -108,7 +72,7 @@ window.onload = function(){
               title: '登録しました！',
               text: '',
             })
-            location.href = ('/')
+            location.href = (`/user/trades/${id}`)
           }
         })
       }
