@@ -5,7 +5,7 @@ set :application, "trade-note"
 set :repo_url, "git@bitbucket.org:kunotomohiro/trade_note.git"
 set :deploy_to, "~/htdocs"
 set :linked_files, fetch(:linked_files, []).push("config/master.key")
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system", "public/storage"
+append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 namespace :deploy do
   desc "Make sure local git is in sync with remote."
