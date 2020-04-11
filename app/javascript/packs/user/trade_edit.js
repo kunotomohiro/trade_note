@@ -30,6 +30,17 @@ window.onload = function(){
     },
     created: function() {
       superagent
+      .get(`/api/v1/initialisations.json`)
+      .set('X-CSRF-Token', token)
+      .set('Accept', 'application/json')
+      .end(function(error, data){
+        trade.$data.trade_styles     = data.body.trade_styles
+        trade.$data.trade_categories = data.body.trade_categories
+        trade.$data.results          = data.body.results
+        trade.$data.trade.user_id    = data.body.user_id
+      })
+      
+      superagent
       .get(location.pathname + ".json")
       .set('X-CSRF-Token', token)
       .set('Accept', 'application/json')
