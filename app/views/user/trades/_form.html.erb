@@ -30,14 +30,16 @@
         <div class="col-12">
           <label>エントリー日時と決済日時</label>
           <el-date-picker v-model="trade.entry_time" type="datetime"
-            placeholder="Pick a day"
+            placeholder="エントリー"
             format="yyyy/MM/dd HH:mm"
+            :picker-options="datePickerOptions"
             default-time="00:00:00">
           </el-date-picker>
           ~
           <el-date-picker v-model="trade.exit_time" type="datetime"
-            placeholder="Pick a day"
+            placeholder="決済"
             format="yyyy/MM/dd HH:mm"
+            :picker-options="datePickerOptions"
             default-time="00:00:00">
           </el-date-picker>
         </div>

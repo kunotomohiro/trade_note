@@ -1,4 +1,4 @@
-import Vue           from 'vue/dist/vue.esm.js';
+import Vue           from 'vue';
 import Notifications from 'vue-notification';
 import ElementUI     from 'element-ui';
 import               'element-ui/lib/theme-chalk/index.css';
@@ -26,7 +26,12 @@ window.onload = function(){
       },
       results: [],
       trade_styles: [],
-      trade_categories: []
+      trade_categories: [],
+      datePickerOptions: {
+        disabledDate(time) {
+          return time.getTime() > Date.now()
+        }
+      }
     },
     created: function() {
       superagent
@@ -39,7 +44,7 @@ window.onload = function(){
         trade.$data.results          = data.body.results
         trade.$data.trade.user_id    = data.body.user_id
       })
-      
+
       superagent
       .get(location.pathname + ".json")
       .set('X-CSRF-Token', token)

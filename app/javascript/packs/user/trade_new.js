@@ -1,4 +1,4 @@
-import Vue           from 'vue/dist/vue.esm.js';
+import Vue           from 'vue';
 import Notifications from 'vue-notification';
 import ElementUI     from 'element-ui';
 import               'element-ui/lib/theme-chalk/index.css';
@@ -26,7 +26,12 @@ window.onload = function(){
       },
       results: [],
       trade_styles: [],
-      trade_categories: []
+      trade_categories: [],
+      datePickerOptions: {
+        disabledDate(time) {
+          return time.getTime() > Date.now()
+        }
+      }
     },
     created: function() {
       superagent
