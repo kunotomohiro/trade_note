@@ -1,3 +1,6 @@
 @import "foundation/ress.scss";
 @import "foundation/base.scss";
-@import "layout/l-devise-form.scss";
+@import "foundation/variables.scss";
+@import "object/component/c-form.scss";
+@import "object/project/trade/p-trade.scss";
+@import "object/project/shared/p-user-left-side-bar.scss";
