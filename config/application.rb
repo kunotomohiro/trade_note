@@ -17,7 +17,6 @@ module TradeNote
       g.test_framework false
       config.time_zone = 'Tokyo'
       config.active_record.default_timezone = :local
-      config.serve_static_assets = true
     end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
