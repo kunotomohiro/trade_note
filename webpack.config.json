@@ -1,0 +1,11 @@
+module.exports = {
+  module: {
+    loaders: [
+      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      {
+        test: /\.(otf|eot|svg|ttf|woff|woff2)(\?.+)?$/,
+        loader: 'url-loader'
+      }
+    ]
+  }
+}
