@@ -5,48 +5,56 @@
       <div class="row">
         <div class="col-12">
           <label>トレードスタイル</label>
-          <select v-model="trade.trade_style_id" placeholder="トレードスタイル" class="form-control">
-            <option
+          <el-select v-model="trade.trade_style_id" placeholder="トレードスタイル">
+            <el-option
               v-for="trade_style in trade_styles"
               :key="trade_style.id"
               :label="trade_style.name"
               :value="trade_style.id"
             >
-            </option>
-          </select>
+            </el-option>
+          </el-select>
         </div>
         <div class="col-12">
           <label>カテゴリー</label>
-          <select v-model="trade.trade_category_id" placeholder="トレードカテゴリ" class="form-control">
-            <option
+          <el-select v-model="trade.trade_category_id" placeholder="トレードカテゴリ">
+            <el-option
               v-for="trade_category in trade_categories"
               :key="trade_category.id"
               :label="trade_category.name"
               :value="trade_category.id"
             >
-            </option>
-          </select>
+            </el-option>
+          </el-select>
         </div>
         <div class="col-12">
-          <label>エントリー日時</label>
-          <input v-model="trade.entry_time" type="date" class="form-control">
-          <label>決済日時</label>
-          <input v-model="trade.exit_time" type="date" class="form-control">
+          <label>エントリー日時と決済日時</label>
+          <el-date-picker v-model="trade.entry_time" type="datetime"
+            placeholder="Pick a day"
+            format="yyyy/MM/dd HH:mm"
+            default-time="00:00:00">
+          </el-date-picker>
+          ~
+          <el-date-picker v-model="trade.exit_time" type="datetime"
+            placeholder="Pick a day"
+            format="yyyy/MM/dd HH:mm"
+            default-time="00:00:00">
+          </el-date-picker>
         </div>
         <div class="col-12">
           <label>Pips</label>
-          <input placeholder="pips" v-model="trade.pips" class="form-control">
+          <el-input placeholder="pips" v-model="trade.pips"></el-input>
         </div>
         <div class="col-12">
           <label>結果</label>
-          <select placeholder="result" v-model="trade.result" class="form-control">
-            <option
+          <el-select placeholder="result" v-model="trade.result">
+            <el-option
               v-for="result in results"
               :key="result"
               :label="result"
               :value="result"
             >
-          </select>
+          </el-select>
         </div>
         <div class="col-12">
           <label>画像</label>
