@@ -23,11 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
-
-gem 'puma_worker_killer'
-gem 'devise'
-gem "aws-sdk-s3", require: false
+gem 'image_processing', '~> 1.2'
+gem 'mini_magick'
 
 gem 'puma_worker_killer'
 gem 'devise'
