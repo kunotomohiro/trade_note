@@ -1,0 +1,74 @@
+<div class="mt-5" id="trade">
+  <div class="row">
+    <%= render "shared/user/left_side_bar" %>
+    <div class="col-6 c-trade-form">
+      <div class="row">
+        <div class="col-12">
+          <label>トレードスタイル</label>
+          <select v-model="trade.trade_style_id" placeholder="トレードスタイル" class="form-control">
+            <option
+              v-for="trade_style in trade_styles"
+              :key="trade_style.id"
+              :label="trade_style.name"
+              :value="trade_style.id"
+            >
+            </option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label>カテゴリー</label>
+          <select v-model="trade.trade_category_id" placeholder="トレードカテゴリ" class="form-control">
+            <option
+              v-for="trade_category in trade_categories"
+              :key="trade_category.id"
+              :label="trade_category.name"
+              :value="trade_category.id"
+            >
+            </option>
+          </select>
+        </div>
+        <div class="col-12">
+          <label>エントリー日時</label>
+          <input v-model="trade.entry_time" type="date" class="form-control">
+          <label>決済日時</label>
+          <input v-model="trade.exit_time" type="date" class="form-control">
+        </div>
+        <div class="col-12">
+          <label>Pips</label>
+          <input placeholder="pips" v-model="trade.pips" class="form-control">
+        </div>
+        <div class="col-12">
+          <label>結果</label>
+          <select placeholder="result" v-model="trade.result" class="form-control">
+            <option
+              v-for="result in results"
+              :key="result"
+              :label="result"
+              :value="result"
+            >
+          </select>
+        </div>
+        <div class="col-12">
+          <label>画像</label>
+          <input name="uploadedImage" type="file" ref="file" accept="image/*" @change="selectImage">
+        </div>
+        <div class="col-12 text-center">
+          <textarea placeholder="メモ" v-model="trade.content"></textarea>
+        </div>
+        <% if current_page?(new_user_trade_path) %>
+          <div class="col-12 text-center">
+            <button class="btn c-devise-form__submit-btn" @click="submit" enctype="multipart/form-data">
+              登録する
+            </button>
+          </div>
+        <% else %>
+          <div class="col-12 text-center">
+            <button class="btn c-devise-form__submit-btn" @click="update(trade.id)" enctype="multipart/form-data">
+              トレードの記録を変更する
+            </button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
