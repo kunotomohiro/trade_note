@@ -1,11 +1,7 @@
 import Vue           from 'vue';
 import Notifications from 'vue-notification';
-import ElementUI     from 'element-ui'
-import               'element-ui/lib/theme-chalk/index.css'
-import locale        from 'element-ui/lib/locale/lang/ja'
 import superagent    from 'superagent';
 
-Vue.use(ElementUI, { locale })
 Vue.use(Notifications)
 //see https://www.npmjs.com/package/vue-notification
 
