@@ -21,6 +21,7 @@ window.onload = function(){
         result: "資産増",
         trade_style_id: ""
       },
+      trade_image: "/img/nophoto_rectangle.jpg",
       results: [],
       trade_styles: [],
       trade_categories: [],
@@ -76,6 +77,7 @@ window.onload = function(){
         let reader = new FileReader();
         reader.onload = (e) => {
          trade.$data.trade.image = e.target.result;
+         trade.$data.trade_image = e.target.result;
          this.$forceUpdate()
        };
        reader.readAsDataURL(file);
