@@ -1,9 +1,9 @@
 <div class="mt-5" id="trade">
   <div class="row">
     <%= render "shared/user/left_side_bar" %>
-    <div class="col-10 col-lg-6 c-trade-form">
+    <div class="col-10 col-lg-7 mb-5 c-trade-form">
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 col-sm-6">
           <label>トレードスタイル</label>
           <select v-model="trade.trade_style_id" placeholder="トレードスタイル" class="form-control">
             <option
@@ -15,7 +15,7 @@
             </option>
           </select>
         </div>
-        <div class="col-12">
+        <div class="col-12 col-sm-6">
           <label>カテゴリー</label>
           <select v-model="trade.trade_category_id" placeholder="トレードカテゴリ" class="form-control">
             <option
@@ -27,17 +27,19 @@
             </option>
           </select>
         </div>
-        <div class="col-12">
+        <div class="col-12 col-sm-6">
           <label>エントリー日時</label>
           <input v-model="trade.entry_time" type="date" class="form-control">
+        </div>
+        <div class="col-12 col-sm-6">
           <label>決済日時</label>
           <input v-model="trade.exit_time" type="date" class="form-control">
         </div>
-        <div class="col-12">
+        <div class="col-12 col-sm-6">
           <label>Pips</label>
           <input placeholder="pips" v-model="trade.pips" class="form-control">
         </div>
-        <div class="col-12">
+        <div class="col-12 col-sm-6">
           <label>結果</label>
           <select placeholder="result" v-model="trade.result" class="form-control">
             <option
@@ -46,6 +48,7 @@
               :label="result"
               :value="result"
             >
+            </option>
           </select>
         </div>
         <div class="col-12">
@@ -67,7 +70,7 @@
         </div>
         <div class="col-12 text-center mt-3">
           <button class="btn c-devise-form__submit-btn" @click="update(trade.id)" enctype="multipart/form-data">
-            トレードの記録を変更する
+            内容を変更する
           </button>
         </div>
       </div>
