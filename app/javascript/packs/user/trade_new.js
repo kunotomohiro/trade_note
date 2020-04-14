@@ -32,6 +32,7 @@ window.onload = function(){
       }
     },
     created: function() {
+      self = this
       superagent
       .get(`/api/v1/initialisations.json`)
       .set('X-CSRF-Token', token)
@@ -49,7 +50,7 @@ window.onload = function(){
         .post(`/api/v1/user/trades`)
         .set('X-CSRF-Token', token)
         .set('Accept', 'application/json')
-        .send({trade: this.trade})
+        .send({trade: self.trade})
         .end(function(error, data){
           if (data.created) {
             Vue.notify({
@@ -71,14 +72,14 @@ window.onload = function(){
       },
       selectImage: function(event){
         let files = event.target.files
-        this.createTradeImage(files[0]);
+        self.createTradeImage(files[0]);
       },
       createTradeImage(file) {
         let reader = new FileReader();
         reader.onload = (e) => {
          trade.$data.trade.image = e.target.result;
          trade.$data.trade_image = e.target.result;
-         this.$forceUpdate()
+         self.$forceUpdate()
        };
        reader.readAsDataURL(file);
       }
