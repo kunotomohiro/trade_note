@@ -21,6 +21,8 @@ window.onload = function(){
         result: "資産増",
         trade_style_id: ""
       },
+      changeImage: true,
+      trade_image: "/img/nophoto_rectangle.jpg",
       results: [],
       trade_styles: [],
       trade_categories: [],
@@ -31,6 +33,7 @@ window.onload = function(){
       }
     },
     created: function() {
+      self = this
       superagent
       .get(`/api/v1/initialisations.json`)
       .set('X-CSRF-Token', token)
@@ -53,13 +56,15 @@ window.onload = function(){
     methods: {
       selectImage: function(event){
         let files = event.target.files
-        this.createTradeImage(files[0]);
+        self.createTradeImage(files[0]);
+        self.changeImage = false
       },
       createTradeImage(file) {
         let reader = new FileReader();
         reader.onload = (e) => {
          trade.$data.trade.image = e.target.result;
-         this.$forceUpdate()
+         trade.$data.trade_image = e.target.result;
+         self.$forceUpdate()
        };
        reader.readAsDataURL(file);
       },
@@ -68,7 +73,7 @@ window.onload = function(){
         .put(`/api/v1/user/trades/${id}`)
         .set('X-CSRF-Token', token)
         .set('Accept', 'application/json')
-        .send({trade: this.trade})
+        .send({trade: self.trade})
         .end(function(error, data){
           if (data.created) {
             Vue.notify({

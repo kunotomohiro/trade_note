@@ -1,12 +1,4 @@
 .p-trade {
-  a {
-    color: $black;
-    display: block;
-    &:hover {
-      opacity: 0.7;
-      color: $black;
-    }
-  }
   &__avatar {
     width: 130px;
     border-radius: 50%;
@@ -73,6 +65,14 @@
       outline: none;
       line-height: 1.6;
       resize: vertical;
+    }
+  }
+  a {
+    color: $black;
+    display: block;
+    &:hover {
+      opacity: 0.7;
+      color: $black;
     }
   }
 }

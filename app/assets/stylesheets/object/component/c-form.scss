@@ -1,20 +1,46 @@
 .c-trade-form {
   background-color: #F7F7F7;
   padding: 30px;
-  margin-left: 100px;
+  margin: auto;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
   -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  @media (min-width: $lg) {
+    margin-left: 60px;
+  }
   label {
     display: block;
+    margin-bottom: 2px;
+    margin-top: 10px;
   }
   textarea {
     background-color: $white;
-    border: 3px solid $white;
     width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    min-height: 150px;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e5e5e5;
+    font-size: 14px;
+    outline: none;
+    line-height: 1.6;
+    resize: vertical;
+  }
+  img {
+    height: 230px;
+    width: 100%;
+    cursor: pointer;
+    @media (min-width: 400px) {
+      height: 300px;
+    }
+    &:hover {
+      opacity: 0.9;
+    }
   }
 }
 
