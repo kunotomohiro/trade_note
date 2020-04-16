@@ -21,4 +21,5 @@ class Trade < ApplicationRecord
     FileUtils.rm("#{Rails.root}/tmp/#{filename}")
     
   end
+  
 end

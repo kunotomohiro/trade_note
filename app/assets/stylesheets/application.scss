@@ -3,4 +3,26 @@
 @import "foundation/variables.scss";
 @import "object/component/c-form.scss";
 @import "object/project/trade/p-trade.scss";
+@import "object/project/user/p-user_profile.scss";
 @import "object/project/shared/p-user-left-side-bar.scss";
+
+.page-item a.page-link,
+.page-item:last-child .page-link,
+.page-item:first-child .page-link {
+  border-radius: 0.25em;
+  margin-right: 5px;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: $white;
+  background-color: $wine-red;
+  border-color: $wine-red;
+  &:hover {
+    color: $white;
+  }
+}
+
+.pagination{
+  display: inline-flex;
+}
