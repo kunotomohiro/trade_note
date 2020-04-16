@@ -44,7 +44,7 @@ window.onload = function(){
        };
        reader.readAsDataURL(file);
       },
-      update() {
+      submit() {
         superagent
         .put(`/user/user_profile`)
         .set('X-CSRF-Token', token)
