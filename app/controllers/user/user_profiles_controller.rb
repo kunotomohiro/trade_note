@@ -29,15 +29,17 @@ class User::UserProfilesController < User::ApplicationController
 
   def update
     @user_profile = current_user.user_profile
-    if user_profile_params.present?
-      @user_profile.update(user_profile_params.except(:avatar))
-      @user_profile.base64upload(user_profile_params[:avatar])
-      @user_profile.update(user_profile_params)
-      format.html
-      format.json { render json: @user_profile,  status: :created }
-    else
-      format.html
-      format.json { render json: @user_profile_params.errors, status: :unprocessable_entity }
+    respond_to do |format|
+      if user_profile_params.present?
+        @user_profile.update(user_profile_params.except(:avatar))
+        @user_profile.base64upload(user_profile_params[:avatar])
+        @user_profile.update(user_profile_params)
+        format.html
+        format.json { render json: @user_profile,  status: :created }
+      else
+        format.html
+        format.json { render json: @user_profile_params.errors, status: :unprocessable_entity }
+      end
     end
   end
 
