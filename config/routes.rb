@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :static_pages
 
   namespace :user do
-    resource :user_profile
+    resource  :user_profile
     resources :trades do
     end
   end
