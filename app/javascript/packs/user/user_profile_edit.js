@@ -24,7 +24,6 @@ window.onload = function(){
         .get(location.pathname + ".json")
         .set('X-CSRF-Token', token)
         .set('Accept', 'application/json')
-        .send({user_profile: self.user_profile})
         .end(function(error, data){
           user_profile.$data.user_profile = data.body.user_profile
         })
