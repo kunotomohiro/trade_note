@@ -23,9 +23,9 @@ window.onload = function(){
     methods: {
       selectImage: function(event){
         let files = event.target.files
-        self.createTradeImage(files[0]);
+        self.createUserAvatar(files[0]);
       },
-      createTradeImage(file) {
+      createUserAvatar(file) {
         let reader = new FileReader();
         reader.onload = (e) => {
          user_profile.$data.user_profile.avatar  = e.target.result;

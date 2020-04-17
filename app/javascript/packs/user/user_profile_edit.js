@@ -21,20 +21,20 @@ window.onload = function(){
     created: function() {
       self = this
       superagent
-        .get(location.pathname + ".json")
-        .set('X-CSRF-Token', token)
-        .set('Accept', 'application/json')
-        .end(function(error, data){
-          user_profile.$data.user_profile = data.body.user_profile
-        })
+      .get(location.pathname + ".json")
+      .set('X-CSRF-Token', token)
+      .set('Accept', 'application/json')
+      .end(function(error, data){
+        user_profile.$data.user_profile = data.body.user_profile
+      })
     },
     methods: {
       selectImage: function(event){
         let files = event.target.files
-        self.createTradeImage(files[0]);
+        self.createUserAvatar(files[0]);
         self.changeImage = false
       },
-      createTradeImage(file) {
+      createUserAvatar(file) {
         let reader = new FileReader();
         reader.onload = (e) => {
          user_profile.$data.user_profile.avatar  = e.target.result;
