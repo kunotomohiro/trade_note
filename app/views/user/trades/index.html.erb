@@ -40,6 +40,9 @@
               <%= link_to "トレードの記録を残す", new_user_trade_path, class: "btn c-devise-form__submit-btn text-white" %>
             </div>
           <% end %>
+          <div class="col-12 text-center">
+            <%= paginate @trades %>
+          </div>
         </div>
       </div>
     </div>

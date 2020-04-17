@@ -1,5 +1,38 @@
-<%= form_with model: [:user, @user_profile], url: user_user_profile_path, local: true  do |f| %>
-  <%= f.text_area :nickname %>
-  <%= f.file_field :avatar %>
-  <%= f.submit %>
-<% end %>
+<div class="p-user_profile_form" id="user_profile">
+  <div class="container">
+    <div class="row">
+      <div class="col-10 col-sm-9 col-md-7 col-lg-4 mx-auto">
+        <div class="p-user_profile_form__wrapper">
+          <div class="text-center">
+            <p>画像と名前を変更できます</p>
+          </div>
+          <div class="col-12 text-center">
+            <label for="file_upload">
+              <div v-if="changeImage">
+                <%= image_tag @user_profile.avatar, class: "p-user_profile_form__avatar" if @user_profile.avatar.attached? %>
+                <input name="uploadedImage" class="mt-3 d-none" type="file" ref="file" accept="image/*" @change="selectImage" id="file_upload">
+              </div>
+              <div v-else>
+                <img :src="avatar" class="p-user_profile_form__avatar">
+                <input name="uploadedImage" class="mt-3 d-none" type="file" ref="file" accept="image/*" @change="selectImage" id="file_upload">
+              </div>
+            </label>
+          </div>
+          <div class="col-12">
+            <label>ニックネーム</label>
+          </div>
+          <div class="col-12">
+            <input v-model="user_profile.nickname" class="form-control">
+          </div>
+          <div class="col-12 text-center mt-3">
+            <button class="btn p-user_profile_form__submit-btn" @click="update" enctype="multipart/form-data">
+              変更する
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_packs_with_chunks_tag 'user/user_profile_edit' %>

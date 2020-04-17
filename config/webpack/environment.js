@@ -4,6 +4,8 @@ const vue = require('./loaders/vue')
 
 const webpack = require('webpack')
 
+environment.splitChunks()
+
 environment.plugins.prepend('Provide',
   new webpack.ProvidePlugin({
     $: 'jquery/src/jquery',
