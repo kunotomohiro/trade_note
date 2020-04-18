@@ -11,6 +11,7 @@ window.onload = function(){
   var user_profile = new Vue({
     el: "#user_profile",
     data: {
+      errors: [],
       user_profile: {
         nickname: "",
         avatar: ""
@@ -35,6 +36,29 @@ window.onload = function(){
        reader.readAsDataURL(file);
       },
       submit() {
+        user_profile.$data.errors = [];
+        if (!user_profile.$data.user_profile.nickname){
+          this.errors.push('ニックネームを入力して下さい');
+        }
+        if (!user_profile.$data.user_profile.avatar){
+          this.errors.push('画像を入力して下さい');
+        }
+
+        if (user_profile.$data.errors.length) {
+          for (let i = 0;  i < user_profile.$data.errors.length;  i++ ) {
+            this.$notify({
+              group: 'information',
+              type: 'warn',
+              title: user_profile.$data.errors[i]
+            })
+          }
+          this.$notify({
+            group: 'information',
+            type: 'error',
+            title: '入力内容をご確認下さい。'
+          })
+          return
+        }
         superagent
         .post(`/user/user_profile`)
         .set('X-CSRF-Token', token)

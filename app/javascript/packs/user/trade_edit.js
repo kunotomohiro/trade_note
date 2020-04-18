@@ -72,6 +72,7 @@ window.onload = function(){
         if (!confirm('本当に変更しますか？')){
           return
         }
+        
         superagent
         .put(`/api/v1/user/trades/${id}`)
         .set('X-CSRF-Token', token)

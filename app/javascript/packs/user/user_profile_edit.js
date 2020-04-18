@@ -44,6 +44,10 @@ window.onload = function(){
        reader.readAsDataURL(file);
       },
       update() {
+        if (!confirm('本当に変更しますか？')){
+          return
+        }
+
         superagent
         .put(`/user/user_profile`)
         .set('X-CSRF-Token', token)
@@ -61,8 +65,8 @@ window.onload = function(){
           } else {
             Vue.notify({
               group: 'information',
-              type: 'error',
-              title: '登録に失敗しました',
+              type: 'success',
+              title: '登録しました！',
               text: '',
             })
             location.replace('/')
