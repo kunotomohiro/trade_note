@@ -1,9 +1,17 @@
 .l-header {
   height: 64px;
-  padding: 0 200px;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid $wine-red;
+  font-size: 10px;
+  @media (min-width: $sm) {
+    padding: 0 100px;
+    font-size: 16px;
+  }
+  @media (min-width: $lg) {
+    padding: 0 192px;
+  }
   &__logo {
     padding-top: 10px;
     img {
@@ -18,25 +26,51 @@
       }
     }
     span {
-      font-size: 27px;
+      font-size: 16px;
       font-style: oblique;
       vertical-align: middle;
+      @media (min-width: $sm) {
+        font-size: 27px;
+      }
     }
   }
   &__user-nav {
-    padding: 10px 0 0 12px;
-    width: 200px;
-    border-right: 1px solid #EEEEEE;
-    border-left: 1px solid #EEEEEE;
+    width: 142px;
+    border-right: 1px solid $light-gray;
+    border-left: 1px solid $light-gray;
     cursor: pointer;
     &:hover {
       opacity: 0.9;
-      background-color: #EEEEEE;
+      background-color: $light-gray;
+    }
+    @media (min-width: $sm) {
+      width: 200px;
     }
     img {
-      width: 40px;
-      height: 40px;
+      width: 35px;
+      height: 35px;
       border-radius: 100%;
     }
+    &__list {
+      background-color: $white;
+      border: 1px solid $light-gray;
+      margin-top: 12px;
+      a {
+        color: $black;
+        display: block;
+        padding: 10px;
+        border-bottom: 1px solid $light-gray;
+        width: 139px;
+        &:hover {
+          background-color: $gray;
+        }
+        @media (min-width: $sm) {
+          width: 197px;
+        }
+      }
+    }
+  }
+  &__user-profile {
+    padding: 13px 0 0 12px;
   }
 }

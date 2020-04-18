@@ -1,0 +1,39 @@
+<% if user_signed_in? %>
+  <div class="l-header d-flex" id="header">
+    <div class="l-header__logo">
+      <%= link_to user_trades_path do %>
+        <%= image_tag "/img/header-icon.png" %> <span style="color: red">Trade</span> <span class="text-success">Note</span>
+      <% end %>
+    </div>
+    <div class="l-header__user-nav">
+      <div class="l-header__user-profile">
+        <%= image_tag current_user.user_profile.avatar.variant(resize_to_fill: [100, 100],crop: "100x100+0+0").processed %>
+        <div class="d-inline-block text-center">
+          <%= current_user.user_profile.nickname %>
+        </div>
+      </div>
+      <div id="nav-list" class="l-header__user-nav__list d-none">
+        <%= link_to "トレード一覧", user_trades_path %>
+        <%= link_to "トレードを記録する", new_user_trade_path %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= content_for :scripts do %>
+  <script>
+    $(function(){
+      var nav = document.getElementById("nav-list");
+      var main = document.getElementById("main");
+      $('.l-header__user-nav').mouseover(function() {
+        nav.classList.add("d-block")
+        main.classList.add("l-main__z-index-off")
+      });
+      $('.l-header__user-nav').mouseout(function() {
+        nav.classList.remove("d-block")
+        main.classList.remove("l-main__z-index-off")
+      });
+    });
+  </script>
+<% end %>
