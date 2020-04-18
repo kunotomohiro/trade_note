@@ -58,7 +58,7 @@ window.onload = function(){
             Vue.notify({
               group: 'information',
               type: 'success',
-              title: '登録しました！',
+              title: '変更しました！',
               text: '',
             })
             location.replace('/')
@@ -66,7 +66,7 @@ window.onload = function(){
             Vue.notify({
               group: 'information',
               type: 'success',
-              title: '登録しました！',
+              title: '変更しました！',
               text: '',
             })
             location.replace('/')

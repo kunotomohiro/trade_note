@@ -20,11 +20,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      authenticate :user do
-        namespace :user do
-          resources :trades, only: [:index, :show, :edit, :create, :update]
-        end
-      end
       resource  :initialisations, only: :show
     end
   end
