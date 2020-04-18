@@ -11,6 +11,7 @@ window.onload = function(){
   var trade = new Vue({
     el: "#trade",
     data: {
+      errors: [],
       trade: {
         content: "",
         entry_time: "",
@@ -46,6 +47,42 @@ window.onload = function(){
     },
     methods: {
       submit() {
+        trade.$data.errors = [];
+        if (!trade.$data.trade.image){
+          this.errors.push('画像を入力して下さい');
+        }
+        if (!trade.$data.trade.pips){
+          this.errors.push('pipsを入力して下さい');
+        }
+        if (!trade.$data.trade.exit_time){
+          this.errors.push('決済日時を入力して下さい');
+        }
+        if (!trade.$data.trade.entry_time){
+          this.errors.push('エントリー日時を入力して下さい');
+        }
+        if (!trade.$data.trade.trade_category_id){
+          this.errors.push('カテゴリーを入力して下さい');
+        }
+        if (!trade.$data.trade.trade_style_id) {
+          this.errors.push('トレードスタイルを入力して下さい');
+        }
+
+        if (trade.$data.errors.length) {
+          for (let i = 0;  i < trade.$data.errors.length;  i++ ) {
+            this.$notify({
+              group: 'information',
+              type: 'warn',
+              title: trade.$data.errors[i]
+            })
+          }
+          this.$notify({
+            group: 'information',
+            type: 'error',
+            title: '入力内容をご確認下さい。'
+          })
+          return
+        }
+
         superagent
         .post(`/api/v1/user/trades`)
         .set('X-CSRF-Token', token)
