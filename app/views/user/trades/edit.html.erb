@@ -4,7 +4,7 @@
     <%= render "shared/user/left_side_bar" %>
     <div class="col-10 col-lg-7 mb-5 c-trade-form">
       <div class="row">
-        <div class="col-12 col-sm-6">
+        <div class="col-12">
           <label>トレードスタイル</label>
           <select v-model="trade.trade_style_id" placeholder="トレードスタイル" class="form-control">
             <option
@@ -16,7 +16,7 @@
             </option>
           </select>
         </div>
-        <div class="col-12 col-sm-6">
+        <div class="col-12">
           <label>カテゴリー</label>
           <select v-model="trade.trade_category_id" placeholder="トレードカテゴリ" class="form-control">
             <option
@@ -28,19 +28,19 @@
             </option>
           </select>
         </div>
-        <div class="col-12 col-sm-6">
+        <div class="col-12">
           <label>エントリー日時</label>
           <input v-model="trade.entry_time" type="date" class="form-control">
         </div>
-        <div class="col-12 col-sm-6">
+        <div class="col-12">
           <label>決済日時</label>
           <input v-model="trade.exit_time" type="date" class="form-control">
         </div>
-        <div class="col-12 col-sm-6">
+        <div class="col-12">
           <label>Pips</label>
           <input placeholder="pips" v-model="trade.pips" class="form-control">
         </div>
-        <div class="col-12 col-sm-6">
+        <div class="col-12">
           <label>結果</label>
           <select placeholder="result" v-model="trade.result" class="form-control">
             <option

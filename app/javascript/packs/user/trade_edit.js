@@ -72,9 +72,9 @@ window.onload = function(){
         if (!confirm('本当に変更しますか？')){
           return
         }
-        
+
         superagent
-        .put(`/api/v1/user/trades/${id}`)
+        .put(`/user/trades/${id}`)
         .set('X-CSRF-Token', token)
         .set('Accept', 'application/json')
         .send({trade: self.trade})
@@ -83,7 +83,7 @@ window.onload = function(){
             Vue.notify({
               group: 'information',
               type: 'success',
-              title: '登録しました！',
+              title: '変更しました！',
               text: '',
             })
             location.href = (`/user/trades/${id}`)
@@ -91,10 +91,39 @@ window.onload = function(){
             Vue.notify({
               group: 'information',
               type: 'success',
-              title: '登録しました！',
+              title: '変更しました！',
               text: '',
             })
             location.href = (`/user/trades/${id}`)
+          }
+        })
+      },
+      destroy(id) {
+        if (!confirm('本当に削除しますか？')){
+          return
+        }
+
+        superagent
+        .delete(`/user/trades/${id}`)
+        .set('X-CSRF-Token', token)
+        .set('Accept', 'application/json')
+        .send({trade: self.trade})
+        .end(function(error, data){
+          if (data.ok) {
+            Vue.notify({
+              group: 'information',
+              type: 'success',
+              title: '削除しました！',
+              text: '',
+            })
+            location.href = (`/user/trades`)
+          } else {
+            Vue.notify({
+              group: 'information',
+              type: 'error',
+              title: '削除に失敗しました！',
+              text: '',
+            })
           }
         })
       }

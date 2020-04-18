@@ -84,7 +84,7 @@ window.onload = function(){
         }
 
         superagent
-        .post(`/api/v1/user/trades`)
+        .post(`/user/trades`)
         .set('X-CSRF-Token', token)
         .set('Accept', 'application/json')
         .send({trade: self.trade})

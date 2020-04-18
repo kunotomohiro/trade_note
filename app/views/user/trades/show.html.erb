@@ -1,4 +1,5 @@
 <div class="mt-5" id="trade">
+  <notifications group="information"></notifications>
   <div class="row">
     <%= render "shared/user/left_side_bar" %>
     <div class="col-8 col-lg-6 p-trade__card">
@@ -30,9 +31,9 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <%= link_to user_trade_path, class: "btn p-trade__card__delete-btn mt-4", method: :delete, data: { confirm: "本当に削除しますか？" }  do %>
+            <button class="btn p-trade__card__delete-btn mt-4" @click="destroy(trade.id)">
               削除
-            <% end %>
+            </button>
           </div>
           <div class="col-6">
             <%= link_to edit_user_trade_path, class: "btn c-devise-form__submit-btn mt-4" do %>
@@ -44,3 +45,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_packs_with_chunks_tag 'user/trade_edit' %>
