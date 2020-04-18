@@ -124,7 +124,6 @@ window.onload = function(){
               title: '削除に失敗しました！',
               text: '',
             })
-            location.href = (`/user/trades`)
           }
         })
       }
