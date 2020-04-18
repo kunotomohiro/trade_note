@@ -11,6 +11,7 @@ window.onload = function(){
   var user_profile = new Vue({
     el: "#user_profile",
     data: {
+      errors: "",
       user_profile: {
         nickname: "",
         avatar: ""
@@ -48,6 +49,16 @@ window.onload = function(){
           return
         }
 
+        if (!user_profile.$data.user_profile.nickname){
+          self.errors = "ニックネームを入力して下さい";
+          Vue.notify({
+            group: 'information',
+            type: 'warn',
+            title: 'ニックネームを入力して下さい！'
+          })
+          return
+        }
+
         superagent
         .put(`/user/user_profile`)
         .set('X-CSRF-Token', token)
@@ -58,16 +69,14 @@ window.onload = function(){
             Vue.notify({
               group: 'information',
               type: 'success',
-              title: '変更しました！',
-              text: '',
+              title: '変更しました！'
             })
             location.replace('/')
           } else {
             Vue.notify({
               group: 'information',
               type: 'success',
-              title: '変更しました！',
-              text: '',
+              title: '変更しました！'
             })
             location.replace('/')
           }

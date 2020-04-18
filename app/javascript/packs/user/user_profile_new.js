@@ -59,6 +59,7 @@ window.onload = function(){
           })
           return
         }
+        
         superagent
         .post(`/user/user_profile`)
         .set('X-CSRF-Token', token)
