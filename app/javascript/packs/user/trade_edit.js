@@ -11,6 +11,7 @@ window.onload = function(){
   var trade = new Vue({
     el: "#trade",
     data: {
+      errors: "",
       trade: {
         content: "",
         entry_time: "",
@@ -70,6 +71,16 @@ window.onload = function(){
       },
       update(id) {
         if (!confirm('本当に変更しますか？')){
+          return
+        }
+
+        if (!trade.$data.trade.pips){
+          self.errors = "pipsを入力して下さい";
+          Vue.notify({
+            group: 'information',
+            type: 'warn',
+            title: self.errors
+          })
           return
         }
 
