@@ -29,6 +29,8 @@ window.onload = function(){
       .end(function(error, data){
         user_profile.$data.user_profile = data.body.user_profile
       })
+
+      self.inputNickname()
     },
     methods: {
       inputNickname() {
@@ -37,7 +39,6 @@ window.onload = function(){
         } else {
           self.nicknameStatus = false
         }
-        console.log(self.user_profile.nickname.length)
       },
       selectImage: function(event){
         let files = event.target.files

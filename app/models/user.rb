@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_one  :user_profile, dependent: :destroy
   has_many :trades, dependent: :destroy
+
+  validates_format_of :password, with: /\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[A-Za-z\d]{8,100}\z/
 end

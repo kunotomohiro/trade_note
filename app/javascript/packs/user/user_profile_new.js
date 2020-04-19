@@ -16,12 +16,20 @@ window.onload = function(){
         nickname: "",
         avatar: ""
       },
-      avatar: "/img/noface.png"
+      avatar: "/img/noface.png",
+      nicknameStatus: false
     },
     created: function() {
       self = this
     },
     methods: {
+      inputNickname() {
+        if (self.user_profile.nickname.length <= 8) {
+          self.nicknameStatus = true
+        } else {
+          self.nicknameStatus = false
+        }
+      },
       selectImage: function(event){
         let files = event.target.files
         self.createUserAvatar(files[0]);
@@ -42,6 +50,9 @@ window.onload = function(){
         }
         if (!user_profile.$data.user_profile.avatar){
           this.errors.push('画像を入力して下さい');
+        }
+        if (user_profile.$data.user_profile.nickname.length > 8 ){
+          this.errors.push('ニックネームは８文字以内にしてください');
         }
 
         if (user_profile.$data.errors.length) {

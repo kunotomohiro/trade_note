@@ -1,13 +1,25 @@
+// font-awsome
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+// foundation
 @import "foundation/ress.scss";
 @import "foundation/base.scss";
 @import "foundation/variables.scss";
+
+// layout
 @import "layout/l-header.scss";
 @import "layout/l-footer.scss";
 @import "layout/l-main.scss";
+
+// object
 @import "object/component/c-form.scss";
 @import "object/project/trade/p-trade.scss";
 @import "object/project/user/p-user_profile.scss";
 @import "object/project/shared/p-user-left-side-bar.scss";
+
+// utility
+@import "object/utility/u-cursor.scss";
 
 .page-item a.page-link,
 .page-item:last-child .page-link,

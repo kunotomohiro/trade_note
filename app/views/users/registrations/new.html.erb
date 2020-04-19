@@ -1,7 +1,7 @@
-<div class="c-devise-form">
+<div class="c-devise-form" id="password_for_user">
   <div class="container">
     <div class="row">
-      <div class="col-8 col-sm-6 col-md-5 col-lg-4 text-center mx-auto">
+      <div class="col-12 col-sm-8 col-lg-6 col-xl-5 text-center mx-auto">
         <div class="c-devise-form__wrapper">
           <h3 class="mb-4">新規登録</h3>
           <div class="form-group">
@@ -9,19 +9,24 @@
               <%= render "devise/shared/error_messages", resource: resource %>
 
               <div class="field mb-3">
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "example@gmail.com" %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "example@gmail.com", "v-model": "email", "@keyup": "inputEmail" %>
+                <div class="text-left"><i class="fas fa-check-circle fa-sm" :class="[ emailStatus ? 'text-success' : 'text-danger' ]"></i> 有効なアドレス</div>
               </div>
 
-              <div class="field  mb-3">
-                <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "パスワード(6文字以上)" %>
+              <div class="field mb-3 text-left">
+                <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "パスワード(8文字以上)", "v-model": "password", "@keyup": "inputPassword" %>
+                <div class="mt-2"><i class="fas fa-check-circle fa-sm" :class="[ passwordLength ? 'text-success' : 'text-danger' ]"></i> 8文字以上</div>
+                <div><i class="fas fa-check-circle fa-sm" :class="[ characterCase ? 'text-success' : 'text-danger' ]"></i> 大文字と小文字入力</div>
+                <div><i class="fas fa-check-circle fa-sm" :class="[ includeNumber ? 'text-success' : 'text-danger' ]"></i> 数字入力</div>
               </div>
 
-              <div class="field mb-3">
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "同じパスワードを入力" %>
+              <div class="field mb-3 text-left">
+                <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "同じパスワードを入力", "v-model": "passwordConfirmation", "@keyup": "inputPasswordConfirmation" %>
+                <div><i class="fas fa-check-circle fa-sm" :class="[ passwordConfirmationStatus ? 'text-success' : 'text-danger' ]"></i> 同じパスワード</div>
               </div>
 
               <div class="actions">
-                <%= f.submit "新規登録", class: "btn c-devise-form__submit-btn" %>
+                <%= f.submit "新規登録", class: "btn c-devise-form__submit-btn", ":disabled": "isPush", ":class": "{ 'u-cursor-not-allowed' : isPush }" %>
               </div>
             <% end %>
           </div>
@@ -30,3 +35,6 @@
       </div>
     </div>
   </div>
+</div>
+
+<%= javascript_packs_with_chunks_tag 'user/password_for_user' %>

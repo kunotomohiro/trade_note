@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+<% if user_signed_in? && !current_page?(new_user_user_profile_path) %>
   <div class="l-header">
     <div class="l-header__logo">
       <%= link_to user_trades_path do %>
