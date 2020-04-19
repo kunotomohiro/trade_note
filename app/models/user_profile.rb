@@ -2,6 +2,8 @@ class UserProfile < ApplicationRecord
   has_one_attached :avatar, dependent: :destroy
   belongs_to :user
 
+  validates :nickname, presence: true, length: { maximum: 8 }
+
   def base64upload(file)
 
     return if file.blank?

@@ -30,6 +30,7 @@ gem 'puma_worker_killer'
 gem 'devise'
 gem "aws-sdk-s3", require: false
 gem 'kaminari'
+gem 'font-awesome-sass'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
