@@ -23,7 +23,8 @@
             <label>ニックネーム</label>
           </div>
           <div class="col-12">
-            <input v-model="user_profile.nickname" class="form-control">
+            <input v-model="user_profile.nickname" class="form-control" @keyup="inputNickname">
+            <p><i class="fas fa-check-circle fa-sm" :class="[ nicknameStatus === true ? 'text-success' : 'text-danger' ]"></i> ８文字以内</p>
           </div>
           <div class="col-12 text-center mt-3">
             <button class="btn p-user_profile_form__submit-btn" @click="update" enctype="multipart/form-data">

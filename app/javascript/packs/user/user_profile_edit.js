@@ -11,13 +11,14 @@ window.onload = function(){
   var user_profile = new Vue({
     el: "#user_profile",
     data: {
-      errors: "",
+      errors: [],
       user_profile: {
         nickname: "",
         avatar: ""
       },
       changeImage: true,
-      avatar: "/img/noface.png"
+      avatar: "/img/noface.png",
+      nicknameStatus: false
     },
     created: function() {
       self = this
@@ -30,6 +31,14 @@ window.onload = function(){
       })
     },
     methods: {
+      inputNickname() {
+        if (self.user_profile.nickname.length <= 8) {
+          self.nicknameStatus = true
+        } else {
+          self.nicknameStatus = false
+        }
+        console.log(self.user_profile.nickname.length)
+      },
       selectImage: function(event){
         let files = event.target.files
         self.createUserAvatar(files[0]);
@@ -49,12 +58,25 @@ window.onload = function(){
           return
         }
 
+        user_profile.$data.errors = [];
         if (!user_profile.$data.user_profile.nickname){
-          self.errors = "ニックネームを入力して下さい";
-          Vue.notify({
+          this.errors.push('ニックネームを入力して下さい');
+        }
+        if (user_profile.$data.user_profile.nickname.length > 8 ){
+          this.errors.push('ニックネームは８文字以内にしてください');
+        }
+        if (user_profile.$data.errors.length) {
+          for ( let i = 0; i < user_profile.$data.errors.length;  i++) {
+            this.$notify({
+              group: 'information',
+              type: 'warn',
+              title: user_profile.$data.errors[i]
+            })
+          }
+          this.$notify({
             group: 'information',
-            type: 'warn',
-            title: 'ニックネームを入力して下さい！'
+            type: 'error',
+            title: '入力内容をご確認下さい。'
           })
           return
         }
