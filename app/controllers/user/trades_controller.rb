@@ -3,8 +3,9 @@ class User::TradesController < User::ApplicationController
   protect_from_forgery :except => [:create, :update]
 
   def index
-    @trades = current_user
-              .trades.with_attached_image
+    @trade_search_form = TradeSearchForm.new(trade_search_params)
+    @trade_search_form.user_id = current_user.id
+    @trades = @trade_search_form.search
               .order(id: :desc)
               .page(params[:page])
               .per(4)
@@ -80,6 +81,15 @@ class User::TradesController < User::ApplicationController
       :trade_style_id, :trade_category_id, :pips,       :content,
       :entry_time,     :exit_time,         :result,     :user_id,
       :image,          :created_at,        :updated_at, :id
+    )
+  end
+
+  def trade_search_params
+    return if params[:trade_search_form].blank?
+    params.require(:trade_search_form).permit(
+      :trade_category_id, :trade_style_id,  :min_pips,      :max_pips,
+      :min_entry_time,    :max_entry_time,  :min_exit_time, :max_exit_time,
+      :result,            :user_id
     )
   end
 

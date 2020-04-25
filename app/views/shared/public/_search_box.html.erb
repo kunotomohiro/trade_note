@@ -1,0 +1,61 @@
+<div class="col-7 col-sm-12 mb-5">
+  <%= form_with model: @trade_search_form, url: user_trades_path, methods: :get, html:{method: "get"}, local: true do |f| %>
+    <div class="row">
+      <% f.hidden_field :user_id, value: current_user.id %>
+
+      <div class="col-7 col-sm-4 mb-3">
+        <%= f.label :trade_category_id, "カテゴリー" %>
+        <%= f.collection_select :trade_category_id, TradeCategory.select(:id, :name), :id, :name, {include_blank: "カテゴリー"}, {class:"form-control"} %>
+      </div>
+
+      <div class="col-7 col-sm-4 mb-3">
+        <%= f.label :trade_style_id, "スタイル" %>
+        <%= f.collection_select :trade_style_id, TradeStyle.select(:id, :name), :id, :name, {include_blank: "スタイル"}, {class:"form-control"} %>
+      </div>
+
+      <div class="col-7 col-sm-4 mb-3">
+        <%= f.label :min_pips, "Min Pips" %>
+        <%= f.text_field :min_pips, class:"form-control", placeholder: "Min Pips" %>
+      </div>
+
+      <div class="col-7 col-sm-4 mb-3">
+        <%= f.label :max_pips, "Max Pips" %>
+        <%= f.text_field :max_pips, class:"form-control", placeholder: "Max Pips" %>
+      </div>
+
+      <div class="col-7 col-sm-4 mb-3">
+        <%= f.label :min_entry_time, "エントリー" %>
+        <%= f.text_field :min_entry_time, type: "date", class:"form-control" %>
+      </div>
+
+      <div class="col-7 col-sm-4 mb-3">
+        <%= f.label :max_entry_time, "エントリー" %>
+        <%= f.text_field :max_entry_time, type: "date", class:"form-control" %>
+      </div>
+
+      <div class="col-7 col-sm-4 mb-3">
+        <%= f.label :min_exit_time, "決済" %>
+        <%= f.text_field :min_exit_time, type: "date", class:"form-control" %>
+      </div>
+
+      <div class="col-7 col-sm-4 mb-3">
+        <%= f.label :max_exit_time, "決済" %>
+        <%= f.text_field :max_exit_time, type: "date", class:"form-control" %>
+      </div>
+
+      <div class="col-7 col-sm-4 mb-3">
+        <%= f.label  :result, "結果" %>
+        <%= f.select :result, Trade.results.keys , {include_blank: "結果"}, class:"form-control" %>
+      </div>
+
+      <div class="col-7 col-sm-6 mb-3">
+        <%= link_to "検索条件をリセット", user_trades_path, class: "btn p-trade__card__delete-btn text-white" %>
+      </div>
+
+      <div class="col-7 col-sm-6 mb-3">
+        <%= f.submit "この条件で検索する", class: "btn c-devise-form__submit-btn" %>
+      </div>
+
+    </div>
+  <% end %>
+</div>

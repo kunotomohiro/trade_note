@@ -4,6 +4,7 @@
       <%= render "shared/user/left_side_bar" %>
       <div class="col-12 col-lg-9">
         <div class="row">
+          <%= render "shared/public/search_box" %>
           <% if @trades.present? %>
             <% @trades.each do |trade| %>
               <div class="col-7 col-sm-5 p-trade__card mb-5">
