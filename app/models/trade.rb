@@ -6,6 +6,8 @@ class Trade < ApplicationRecord
 
   enum result: { "資産増": 0, "変化なし": 1,"資産減": 2 }
 
+  include Trade::Searchable
+
   def base64upload(file)
 
     return if file.blank?
