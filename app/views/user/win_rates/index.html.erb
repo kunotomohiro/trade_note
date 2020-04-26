@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-12 p-trade mt-4 mt-sm-5">
+     <div class="row">
+      <%= render "shared/user/left_side_bar" %>
+      <div class="col-12 col-lg-9">
+        勝率
+        <table>
+
+          <tr>
+            <th>FX</th>
+            <th>全体</th>
+            <th>デイトレード</th>
+            <th>スイングトレード</th>
+            <th>スキャルピングトレード</th>
+          </tr>
+
+          <tr>
+            <td>トレード数 <%= @trade.search_user_fx_trades.count %></td>
+            <td><%= @trade.fx_win_rate %></td>
+            <td><%= @day_trade.daytrade_win_rate %></td>
+            <td><%= @swing_trade.swing_trade_win_rate %></td>
+            <td><%= @scalping_trade.scalping_trades_win_rate %></td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

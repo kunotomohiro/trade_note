@@ -8,6 +8,8 @@ class Trade < ApplicationRecord
 
   include Trade::Searchable
 
+  attr_accessor :current_user_id
+
   def base64upload(file)
 
     return if file.blank?
@@ -23,5 +25,17 @@ class Trade < ApplicationRecord
     FileUtils.rm("#{Rails.root}/tmp/#{filename}")
     
   end
-  
+
+  def search_user_fx_trades
+    Trade.where("(user_id = ?) and (trade_category_id = ?)", current_user_id, 1)
+  end
+
+  def win_number_of_fx_trades
+    search_user_fx_trades.where("result" => "資産増")
+  end
+
+  def fx_win_rate
+    "#{(win_number_of_fx_trades.count / search_user_fx_trades.count.to_f * 100).floor(1)}%"
+  end
+
 end
