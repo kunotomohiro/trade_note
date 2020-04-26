@@ -35,6 +35,7 @@ class Trade < ApplicationRecord
   end
 
   def fx_win_rate
+    return "0%" if win_number_of_fx_trades.count === 0
     "#{(win_number_of_fx_trades.count / search_user_fx_trades.count.to_f * 100).floor(1)}%"
   end
 
