@@ -1,0 +1,26 @@
+.p-win-rate {
+  &__table {
+    table {
+      margin-top: 5px;
+      text-align: center;
+    }
+    th {
+      margin-top: 5px;
+      color: $white;
+      background-color: #f44336;
+      padding: 10px;
+      border: solid 2px #d0dbe6;
+      width: 200px;
+      font-size: 10px;
+      @media (min-width: $sm) {
+        font-size: 16px;
+      }
+    }
+    td {
+      color: $black;
+      background-color: $white;
+      padding: 10px;
+      border: solid 1px #d0dbe6;
+    }
+  }
+}
