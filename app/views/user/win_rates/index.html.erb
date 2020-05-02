@@ -1,0 +1,78 @@
+<div class="row p-win-rate" id="win_rate">
+  <div class="col-12 p-trade mt-4 mt-sm-5">
+     <div class="row">
+      <%= render "shared/user/left_side_bar" %>
+      <div class="col-12 col-lg-9 p-win-rate__table">
+        <div>
+          <p class="font-weight-bold m-0">勝率</p>
+          <div class="text-right mr-xl-4 p-win-rate__list">
+            <span @click="toggleDisplayWinRate(0)">Fx</span>
+            <span @click="toggleDisplayWinRate(1)">株</span>
+            <span @click="toggleDisplayWinRate(2)">仮想通貨</span>
+          </div>
+        </div>
+        <div class="d-none" :class="{ 'd-block' : displayWinRate[0] }">
+          <p class="m-0">FX トレード数 <%= @fx.search_user_fx_trades.count %></p>
+          <table>
+            <tr>
+              <th>全体</th>
+              <th>デイ</th>
+              <th>スイング</th>
+              <th>スキャルピング</th>
+            </tr>
+
+            <tr>
+              <td><%= @fx.fx_win_rate %></td>
+              <td><%= @fx.fx_day_trade_win_rate %></td>
+              <td><%= @fx.fx_swing_trade_win_rate %></td>
+              <td><%= @fx.fx_scalping_trades_win_rate %></td>
+            </tr>
+
+          </table>
+        </div>
+
+        <div class="d-none" :class="{ 'd-block' : displayWinRate[1] }">
+          <p class="m-0 mt-4">株 トレード数 <%= @stock.search_user_stock_trades.count %></p>
+          <table>
+            <tr>
+              <th>全体</th>
+              <th>デイ</th>
+              <th>スイング</th>
+              <th>スキャルピング</th>
+            </tr>
+
+            <tr>
+              <td><%= @stock.stock_win_rate %></td>
+              <td><%= @stock.stock_day_trade_win_rate %></td>
+              <td><%= @stock.stock_swing_trade_win_rate %></td>
+              <td><%= @stock.stock_scalping_trades_win_rate %></td>
+            </tr>
+
+          </table>
+        </div>
+
+        <div class="d-none" :class="{ 'd-block' : displayWinRate[2] }">
+          <p class="m-0  mt-4">仮想通貨 トレード数 <%= @virtual_currency.search_user_virtual_currency_trades.count %></p>
+          <table>
+            <tr>
+              <th>全体</th>
+              <th>デイ</th>
+              <th>スイング</th>
+              <th>スキャルピング</th>
+            </tr>
+
+            <tr>
+              <td><%= @virtual_currency.virtual_currency_win_rate %></td>
+              <td><%= @virtual_currency.virtual_currency_day_trade_win_rate %></td>
+              <td><%= @virtual_currency.virtual_currency_swing_trade_win_rate %></td>
+              <td><%= @virtual_currency.virtual_currency_scalping_trades_win_rate %></td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_packs_with_chunks_tag 'user/win_rate' %>

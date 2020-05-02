@@ -8,6 +8,8 @@ class Trade < ApplicationRecord
 
   include Trade::Searchable
 
+  attr_accessor :current_user_id
+
   def base64upload(file)
 
     return if file.blank?
@@ -23,5 +25,5 @@ class Trade < ApplicationRecord
     FileUtils.rm("#{Rails.root}/tmp/#{filename}")
     
   end
-  
+
 end
