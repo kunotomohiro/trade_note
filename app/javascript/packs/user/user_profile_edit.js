@@ -1,6 +1,7 @@
 import Vue           from 'vue';
 import Notifications from 'vue-notification';
 import superagent    from 'superagent';
+import profileForm from "../mixin/user/profile_form.js"
 
 Vue.use(Notifications)
 //see https://www.npmjs.com/package/vue-notification
@@ -10,15 +11,9 @@ const token = document.getElementsByName('csrf-token')[0].getAttribute('content'
 window.onload = function(){
   var user_profile = new Vue({
     el: "#user_profile",
+    mixins: [profileForm],
     data: {
-      errors: [],
-      user_profile: {
-        nickname: "",
-        avatar: ""
-      },
-      changeImage: true,
-      avatar: "/img/noface.png",
-      nicknameStatus: false
+      changeImage: true
     },
     created: function() {
       self = this
@@ -33,13 +28,6 @@ window.onload = function(){
       self.inputNickname()
     },
     methods: {
-      inputNickname() {
-        if (self.user_profile.nickname.length <= 8) {
-          self.nicknameStatus = true
-        } else {
-          self.nicknameStatus = false
-        }
-      },
       selectImage: function(event){
         let files = event.target.files
         self.createUserAvatar(files[0]);
