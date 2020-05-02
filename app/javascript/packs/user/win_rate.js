@@ -1,4 +1,4 @@
-import Vue           from 'vue';
+import Vue from 'vue';
 
 window.onload = function(){
   var win_rate = new Vue({
