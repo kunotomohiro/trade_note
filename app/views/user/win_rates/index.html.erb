@@ -22,7 +22,7 @@
 
         </table>
 
-        <p class="m-0">株 トレード数 <%= @trade.search_user_stock_trades.count %></p>
+        <p class="m-0 mt-4">株 トレード数 <%= @trade.search_user_stock_trades.count %></p>
         <table>
           <tr>
             <th>全体</th>
@@ -40,7 +40,7 @@
 
         </table>
 
-        <p class="m-0">仮想通貨 トレード数 <%= @trade.search_user_fx_trades.count %></p>
+        <p class="m-0  mt-4">仮想通貨 トレード数 <%= @trade.search_user_virtual_currency_trades.count %></p>
         <table>
           <tr>
             <th>全体</th>
@@ -50,10 +50,10 @@
           </tr>
 
           <tr>
-            <td><%= @trade.fx_win_rate %></td>
-            <td><%= @day_trade.fx_day_trade_win_rate %></td>
-            <td><%= @swing_trade.fx_swing_trade_win_rate %></td>
-            <td><%= @scalping_trade.fx_scalping_trades_win_rate %></td>
+            <td><%= @trade.virtual_currency_win_rate %></td>
+            <td><%= @day_trade.virtual_currency_day_trade_win_rate %></td>
+            <td><%= @swing_trade.virtual_currency_swing_trade_win_rate %></td>
+            <td><%= @scalping_trade.virtual_currency_scalping_trades_win_rate %></td>
           </tr>
 
         </table>

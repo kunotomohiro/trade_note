@@ -34,12 +34,20 @@ class Trade < ApplicationRecord
     Trade.where("(user_id = ?) and (trade_category_id = ?)", current_user_id, 2)
   end
 
+  def search_user_virtual_currency_trades
+    Trade.where("(user_id = ?) and (trade_category_id = ?)", current_user_id, 3)
+  end
+
   def win_number_of_fx_trades
     search_user_fx_trades.where("result" => "資産増")
   end
 
   def win_number_of_stock_trades
     search_user_stock_trades.where("result" => "資産増")
+  end
+
+  def win_number_of_virtual_currency_trades
+    search_user_virtual_currency_trades.where("result" => "資産増")
   end
 
   def fx_win_rate
@@ -50,6 +58,11 @@ class Trade < ApplicationRecord
   def stock_win_rate
     return "0%" if win_number_of_stock_trades.count === 0
     "#{(win_number_of_stock_trades.count / search_user_stock_trades.count.to_f * 100).floor(1)}%"
+  end
+
+  def virtual_currency_win_rate
+    return "0%" if win_number_of_virtual_currency_trades.count === 0
+    "#{(win_number_of_virtual_currency_trades.count / search_user_virtual_currency_trades.count.to_f * 100).floor(1)}%"
   end
 
 end
