@@ -3,8 +3,8 @@
      <div class="row">
       <%= render "shared/user/left_side_bar" %>
       <div class="col-12 col-lg-9 p-win-rate__table">
-        <p>勝率</p>
-        <p class="m-0">FX トレード数 <%= @trade.search_user_fx_trades.count %></p>
+        <p class="font-weight-bold">勝率</p>
+        <p class="m-0">FX トレード数 <%= @fx.search_user_fx_trades.count %></p>
         <table>
           <tr>
             <th>全体</th>
@@ -14,15 +14,15 @@
           </tr>
 
           <tr>
-            <td><%= @trade.fx_win_rate %></td>
-            <td><%= @day_trade.fx_day_trade_win_rate %></td>
-            <td><%= @swing_trade.fx_swing_trade_win_rate %></td>
-            <td><%= @scalping_trade.fx_scalping_trades_win_rate %></td>
+            <td><%= @fx.fx_win_rate %></td>
+            <td><%= @fx.fx_day_trade_win_rate %></td>
+            <td><%= @fx.fx_swing_trade_win_rate %></td>
+            <td><%= @fx.fx_scalping_trades_win_rate %></td>
           </tr>
 
         </table>
 
-        <p class="m-0 mt-4">株 トレード数 <%= @trade.search_user_stock_trades.count %></p>
+        <p class="m-0 mt-4">株 トレード数 <%= @stock.search_user_stock_trades.count %></p>
         <table>
           <tr>
             <th>全体</th>
@@ -32,15 +32,15 @@
           </tr>
 
           <tr>
-            <td><%= @trade.stock_win_rate %></td>
-            <td><%= @day_trade.stock_day_trade_win_rate %></td>
-            <td><%= @swing_trade.stock_swing_trade_win_rate %></td>
-            <td><%= @scalping_trade.stock_scalping_trades_win_rate %></td>
+            <td><%= @stock.stock_win_rate %></td>
+            <td><%= @stock.stock_day_trade_win_rate %></td>
+            <td><%= @stock.stock_swing_trade_win_rate %></td>
+            <td><%= @stock.stock_scalping_trades_win_rate %></td>
           </tr>
 
         </table>
 
-        <p class="m-0  mt-4">仮想通貨 トレード数 <%= @trade.search_user_virtual_currency_trades.count %></p>
+        <p class="m-0  mt-4">仮想通貨 トレード数 <%= @virtual_currency.search_user_virtual_currency_trades.count %></p>
         <table>
           <tr>
             <th>全体</th>
@@ -50,10 +50,10 @@
           </tr>
 
           <tr>
-            <td><%= @trade.virtual_currency_win_rate %></td>
-            <td><%= @day_trade.virtual_currency_day_trade_win_rate %></td>
-            <td><%= @swing_trade.virtual_currency_swing_trade_win_rate %></td>
-            <td><%= @scalping_trade.virtual_currency_scalping_trades_win_rate %></td>
+            <td><%= @virtual_currency.virtual_currency_win_rate %></td>
+            <td><%= @virtual_currency.virtual_currency_day_trade_win_rate %></td>
+            <td><%= @virtual_currency.virtual_currency_swing_trade_win_rate %></td>
+            <td><%= @virtual_currency.virtual_currency_scalping_trades_win_rate %></td>
           </tr>
 
         </table>
