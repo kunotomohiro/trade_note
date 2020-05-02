@@ -15,9 +15,45 @@
 
           <tr>
             <td><%= @trade.fx_win_rate %></td>
-            <td><%= @day_trade.daytrade_win_rate %></td>
-            <td><%= @swing_trade.swing_trade_win_rate %></td>
-            <td><%= @scalping_trade.scalping_trades_win_rate %></td>
+            <td><%= @day_trade.fx_day_trade_win_rate %></td>
+            <td><%= @swing_trade.fx_swing_trade_win_rate %></td>
+            <td><%= @scalping_trade.fx_scalping_trades_win_rate %></td>
+          </tr>
+
+        </table>
+
+        <p class="m-0">株 トレード数 <%= @trade.search_user_stock_trades.count %></p>
+        <table>
+          <tr>
+            <th>全体</th>
+            <th>デイ</th>
+            <th>スイング</th>
+            <th>スキャルピング</th>
+          </tr>
+
+          <tr>
+            <td><%= @trade.stock_win_rate %></td>
+            <td><%= @day_trade.stock_day_trade_win_rate %></td>
+            <td><%= @swing_trade.stock_swing_trade_win_rate %></td>
+            <td><%= @scalping_trade.stock_scalping_trades_win_rate %></td>
+          </tr>
+
+        </table>
+
+        <p class="m-0">仮想通貨 トレード数 <%= @trade.search_user_fx_trades.count %></p>
+        <table>
+          <tr>
+            <th>全体</th>
+            <th>デイ</th>
+            <th>スイング</th>
+            <th>スキャルピング</th>
+          </tr>
+
+          <tr>
+            <td><%= @trade.fx_win_rate %></td>
+            <td><%= @day_trade.fx_day_trade_win_rate %></td>
+            <td><%= @swing_trade.fx_swing_trade_win_rate %></td>
+            <td><%= @scalping_trade.fx_scalping_trades_win_rate %></td>
           </tr>
 
         </table>
