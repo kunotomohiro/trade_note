@@ -1,5 +1,5 @@
 <div class="col-11 mb-5 mx-auto">
-  <%= form_with model: @trade_search_form, url: user_trades_path, methods: :get, html:{method: "get"}, local: true do |f| %>
+  <%= form_with model: @trade_search_form, url: user_trades_path, method: :get, local: true do |f| %>
     <div class="row l-search-box">
       <% f.hidden_field :user_id, value: current_user.id %>
       <div class="col-12 form-group l-search-box__header">
