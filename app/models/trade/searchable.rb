@@ -3,7 +3,7 @@ module Trade::Searchable
 
   included do
 
-    scope :search_by_user, lambda { |user_id|
+    scope :search_by_user_id, lambda { |user_id|
       return if user_id.blank?
       where("trades.user_id" => user_id)
     }

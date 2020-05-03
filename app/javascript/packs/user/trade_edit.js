@@ -1,6 +1,7 @@
 import Vue           from 'vue';
 import Notifications from 'vue-notification';
 import superagent    from 'superagent';
+import tradeForm from "../mixin/user/trade_form.js"
 
 Vue.use(Notifications)
 //see https://www.npmjs.com/package/vue-notification
@@ -10,28 +11,10 @@ const token = document.getElementsByName('csrf-token')[0].getAttribute('content'
 window.onload = function(){
   var trade = new Vue({
     el: "#trade",
+    mixins: [tradeForm],
     data: {
       errors: "",
-      trade: {
-        content: "",
-        entry_time: "",
-        exit_time: "",
-        pips: "",
-        user_id: "",
-        image: "",
-        result: "資産増",
-        trade_style_id: ""
-      },
-      changeImage: true,
-      trade_image: "/img/nophoto_rectangle.jpg",
-      results: [],
-      trade_styles: [],
-      trade_categories: [],
-      datePickerOptions: {
-        disabledDate(time) {
-          return time.getTime() > Date.now()
-        }
-      }
+      changeImage: true
     },
     created: function() {
       self = this

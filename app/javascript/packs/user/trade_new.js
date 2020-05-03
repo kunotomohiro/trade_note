@@ -1,6 +1,7 @@
 import Vue           from 'vue';
 import Notifications from 'vue-notification';
 import superagent    from 'superagent';
+import tradeForm from "../mixin/user/trade_form.js"
 
 Vue.use(Notifications)
 //see https://www.npmjs.com/package/vue-notification
@@ -10,27 +11,9 @@ const token = document.getElementsByName('csrf-token')[0].getAttribute('content'
 window.onload = function(){
   var trade = new Vue({
     el: "#trade",
+    mixins: [tradeForm],
     data: {
-      errors: [],
-      trade: {
-        content: "",
-        entry_time: "",
-        exit_time: "",
-        pips: "",
-        user_id: "",
-        image: "",
-        result: "資産増",
-        trade_style_id: ""
-      },
-      trade_image: "/img/nophoto_rectangle.jpg",
-      results: [],
-      trade_styles: [],
-      trade_categories: [],
-      datePickerOptions: {
-        disabledDate(time) {
-          return time.getTime() > Date.now()
-        }
-      }
+      errors: []
     },
     created: function() {
       self = this
@@ -46,6 +29,19 @@ window.onload = function(){
       })
     },
     methods: {
+      selectImage: function(event){
+        let files = event.target.files
+        self.createTradeImage(files[0]);
+      },
+      createTradeImage(file) {
+        let reader = new FileReader();
+        reader.onload = (e) => {
+         trade.$data.trade.image = e.target.result;
+         trade.$data.trade_image = e.target.result;
+         self.$forceUpdate()
+       };
+       reader.readAsDataURL(file);
+      },
       submit() {
         trade.$data.errors = [];
         if (!trade.$data.trade.image){
@@ -106,19 +102,6 @@ window.onload = function(){
             })
           }
         })
-      },
-      selectImage: function(event){
-        let files = event.target.files
-        self.createTradeImage(files[0]);
-      },
-      createTradeImage(file) {
-        let reader = new FileReader();
-        reader.onload = (e) => {
-         trade.$data.trade.image = e.target.result;
-         trade.$data.trade_image = e.target.result;
-         self.$forceUpdate()
-       };
-       reader.readAsDataURL(file);
       }
     }
   })

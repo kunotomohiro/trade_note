@@ -8,7 +8,7 @@ class TradeSearchForm
   def search
     Trade
       .with_attached_image
-      .search_by_user(user_id)
+      .search_by_user_id(user_id)
       .search_by_trade_category(trade_category_id)
       .search_by_trade_style(trade_style_id)
       .search_by_min_pips(min_pips)
