@@ -57,6 +57,7 @@ group :development do
   gem 'capistrano-rbenv-vars'
   gem 'ed25519'
   gem 'bcrypt_pbkdf'
+  gem 'spring-commands-rspec'
 end
 
 group :test do
