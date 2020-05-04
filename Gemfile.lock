@@ -121,6 +121,13 @@ GEM
     diff-lcs (1.3)
     ed25519 (1.2.4)
     erubi (1.9.0)
+    factory_bot (5.2.0)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.2.0)
+      factory_bot (~> 5.2.0)
+      railties (>= 4.2.0)
+    faker (2.11.0)
+      i18n (>= 1.6, < 2)
     ffi (1.12.2)
     font-awesome-sass (5.12.0)
       sassc (>= 1.11)
@@ -315,6 +322,8 @@ DEPENDENCIES
   capybara (>= 2.15)
   devise
   ed25519
+  factory_bot_rails
+  faker
   font-awesome-sass
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
