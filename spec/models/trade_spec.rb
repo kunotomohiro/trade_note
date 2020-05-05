@@ -37,6 +37,5 @@ RSpec.describe Trade, type: :model do
         is_expected.to eq(false)
       end
     end
-
   end
 end
