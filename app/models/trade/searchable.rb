@@ -34,7 +34,7 @@ module Trade::Searchable
       where(id: result_trade_ids)
     }
 
-    scope :search_by_uppere_entry_time, lambda { |min_entry_time|
+    scope :search_by_upper_entry_time, lambda { |min_entry_time|
       return if min_entry_time.blank?
       where(arel_table[:entry_time].gteq(min_entry_time))
     }
@@ -44,7 +44,7 @@ module Trade::Searchable
       where(arel_table[:entry_time].lteq(max_entry_time))
     }
 
-    scope :search_by_uppere_exit_time, lambda { |min_exit_time|
+    scope :search_by_upper_exit_time, lambda { |min_exit_time|
       return if min_exit_time.blank?
       where(arel_table[:exit_time].gteq(min_exit_time))
     }
