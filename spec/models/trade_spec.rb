@@ -42,6 +42,8 @@ RSpec.describe Trade, type: :model do
   describe '検索メソッドテスト' do
     let(:trade) { create(:trade) }
     context 'Userのidが渡ってきた時' do
+      let(:user) { create(:trades_user) }
+      let(:trade) { create(:trade, user: user) }
       it "Userのidに紐付くトレードを返す" do
         expect(Trade.search_by_user_id("1")).to include(trade)
       end

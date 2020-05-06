@@ -73,7 +73,10 @@ class User::TradesController < User::ApplicationController
   private
 
   def set_trade_params
-    @trade = current_user.trades.find(params[:id])
+    @trade = Trade.find(params[:id])
+    unless @trade.user === current_user
+      redirect_to user_trades_path
+    end
   end
 
   def trade_params
