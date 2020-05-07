@@ -1,5 +1,6 @@
 class User::TradesController < User::ApplicationController
   before_action :set_trade_params, only: [:show, :edit, :update, :destroy]
+  before_action :trade_user?,      only: [:show, :edit, :update, :destroy]
   protect_from_forgery :except => [:create, :update]
 
   def index
@@ -74,6 +75,9 @@ class User::TradesController < User::ApplicationController
 
   def set_trade_params
     @trade = Trade.find(params[:id])
+  end
+
+  def trade_user?
     unless @trade.user === current_user
       redirect_to user_trades_path
     end
