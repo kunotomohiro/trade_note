@@ -13,9 +13,9 @@ class TradeSearchForm
       .search_by_trade_style(trade_style_id)
       .search_by_min_pips(min_pips)
       .search_by_max_pips(max_pips)
-      .search_by_uppere_entry_time(min_entry_time)
+      .search_by_upper_entry_time(min_entry_time)
       .search_by_lower_entry_time(max_entry_time)
-      .search_by_uppere_exit_time(min_exit_time)
+      .search_by_upper_exit_time(min_exit_time)
       .search_by_lower_exit_time(max_exit_time)
       .search_by_result(result)
   end

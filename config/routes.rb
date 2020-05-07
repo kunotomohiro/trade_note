@@ -13,9 +13,11 @@ Rails.application.routes.draw do
   resources :static_pages
 
   namespace :user do
-    resource  :user_profile
-    resources :win_rates, only: :index
-    resources :trades do
+    authenticate :user do
+      resource  :user_profile
+      resources :win_rates, only: :index
+      resources :trades do
+      end
     end
   end
 

@@ -2,7 +2,12 @@ class Trade < ApplicationRecord
   belongs_to :user
   belongs_to :trade_style
   belongs_to :trade_category
-  has_one_attached :image
+  has_one_attached :image, dependent: :destroy
+
+  validates :result,     presence: true
+  validates :pips,       presence: true
+  validates :entry_time, presence: true
+  validates :exit_time,  presence: true
 
   enum result: { "資産増": 0, "変化なし": 1,"資産減": 2 }
 
