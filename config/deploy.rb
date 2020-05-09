@@ -1,10 +1,10 @@
 # config valid only for current version of Capistrano
 lock "3.7.0"
 
-set :application, "trade-note"
-set :repo_url, "git@bitbucket.org:kunotomohiro/trade_note.git"
-set :deploy_to, "~/htdocs"
-set :linked_files, fetch(:linked_files, []).push("config/master.key")
+set :application,    "trade-note"
+set :repo_url,       "git@github.com:kunotomohiro/trade-note.git"
+set :deploy_to,      "~/htdocs"
+set :linked_files,   fetch(:linked_files, []).push("config/master.key")
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
 
 namespace :deploy do
