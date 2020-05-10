@@ -8,7 +8,7 @@ class Fx < Trade
     search_user_fx_trades.where("result" => "資産増")
   end
 
-  def win_rate
+  def total_win_rate
     return "0%" if win_number_of_fx_trades.count === 0
     "#{(win_number_of_fx_trades.count / search_user_fx_trades.count.to_f * 100).floor(1)}%"
   end

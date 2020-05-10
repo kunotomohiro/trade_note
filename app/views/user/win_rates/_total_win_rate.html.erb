@@ -24,7 +24,7 @@
       </tr>
 
       <tr>
-        <td><%= @fx.win_rate %></td>
+        <td><%= @fx.total_win_rate %></td>
         <td><%= @fx.trade_style_win_rate(1) %></td>
         <td><%= @fx.trade_style_win_rate(2) %></td>
         <td><%= @fx.trade_style_win_rate(3) %></td>
@@ -46,10 +46,10 @@
       </tr>
 
       <tr>
-        <td><%= @stock.stock_win_rate %></td>
-        <td><%= @stock.stock_day_trade_win_rate %></td>
-        <td><%= @stock.stock_swing_trade_win_rate %></td>
-        <td><%= @stock.stock_scalping_trades_win_rate %></td>
+        <td><%= @stock.total_win_rate %></td>
+        <td><%= @stock.trade_style_win_rate(1) %></td>
+        <td><%= @stock.trade_style_win_rate(2) %></td>
+        <td><%= @stock.trade_style_win_rate(3) %></td>
       </tr>
 
     </table>
