@@ -44,6 +44,12 @@ class Trade < ApplicationRecord
     "#{(win_number_of_trades.count / user_trades.count.to_f * 100).floor(1)}%"
   end
 
+  def trade_style_win_rate(trade_style_id)
+    return "0%" if win_number_of_trades === 0
+    trades = win_number_of_trades.where("trade_style_id" => trade_style_id).count
+    "#{(trades / user_trades.count.to_f * 100).floor(1)}%"
+  end
+
   def search_trades_between_year
     from  = Time.now.at_beginning_of_year
     to    = Time.now.at_end_of_year
