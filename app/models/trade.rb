@@ -13,7 +13,7 @@ class Trade < ApplicationRecord
 
   include Trade::Searchable
 
-  attr_accessor :current_user_id
+  attr_accessor :current_user_id, :trade_category_id
 
   def base64upload(file)
 
@@ -29,6 +29,25 @@ class Trade < ApplicationRecord
     image.attach(io: File.open("#{Rails.root}/tmp/#{filename}"), filename: filename)
     FileUtils.rm("#{Rails.root}/tmp/#{filename}")
     
+  end
+
+  def user_trades
+    Trade.where("(user_id = ?) and (trade_category_id = ?)", current_user_id, trade_category_id)
+  end
+
+  def win_number_of_trades
+    user_trades.where("result" => "資産増")
+  end
+
+  def total_win_rate
+    return "0%" if win_number_of_trades.count === 0
+    "#{(win_number_of_trades.count / user_trades.count.to_f * 100).floor(1)}%"
+  end
+
+  def trade_style_win_rate(trade_style_id)
+    return "0%" if win_number_of_trades.count === 0
+    trades = win_number_of_trades.where("trade_style_id" => trade_style_id).count
+    "#{(trades / user_trades.count.to_f * 100).floor(1)}%"
   end
 
 end
