@@ -68,10 +68,10 @@
       </tr>
 
       <tr>
-        <td><%= @virtual_currency.virtual_currency_win_rate %></td>
-        <td><%= @virtual_currency.virtual_currency_day_trade_win_rate %></td>
-        <td><%= @virtual_currency.virtual_currency_swing_trade_win_rate %></td>
-        <td><%= @virtual_currency.virtual_currency_scalping_trades_win_rate %></td>
+        <td><%= @virtual_currency.total_win_rate %></td>
+        <td><%= @virtual_currency.trade_style_win_rate(1) %></td>
+        <td><%= @virtual_currency.trade_style_win_rate(2) %></td>
+        <td><%= @virtual_currency.trade_style_win_rate(3) %></td>
       </tr>
 
     </table>

@@ -8,36 +8,15 @@ class VirtualCurrency < Trade
     search_user_virtual_currency_trades.where("result" => "資産増")
   end
 
-  def win_number_of_virtual_currency_day_trades
-    win_number_of_virtual_currency_trades.where("trade_style_id" => 1).count
-  end
-
-  def win_number_of_virtual_currency_swing_trades
-    win_number_of_virtual_currency_trades.where("trade_style_id" => 2).count
-  end
-
-  def win_number_of_virtual_currency_scalping_trades
-    win_number_of_virtual_currency_trades.where("trade_style_id" => 3).count
-  end
-
-  def virtual_currency_win_rate
+  def total_win_rate
     return "0%" if win_number_of_virtual_currency_trades.count === 0
     "#{(win_number_of_virtual_currency_trades.count / search_user_virtual_currency_trades.count.to_f * 100).floor(1)}%"
   end
 
-  def virtual_currency_day_trade_win_rate
-    return "0%" if win_number_of_virtual_currency_day_trades === 0
-    "#{(win_number_of_virtual_currency_day_trades / search_user_virtual_currency_trades.count.to_f * 100).floor(1)}%"
-  end
-
-  def virtual_currency_swing_trade_win_rate
-    return "0%" if win_number_of_virtual_currency_swing_trades === 0
-    "#{(win_number_of_virtual_currency_swing_trades / search_user_virtual_currency_trades.count.to_f * 100).floor(1)}%"
-  end
-
-  def virtual_currency_scalping_trades_win_rate
-    return "0%" if win_number_of_virtual_currency_scalping_trades === 0
-    "#{(win_number_of_virtual_currency_scalping_trades / search_user_virtual_currency_trades.count.to_f * 100).floor(1)}%"
+  def trade_style_win_rate(trade_style_id)
+    return "0%" if win_number_of_virtual_currency_trades === 0
+    trades = win_number_of_virtual_currency_trades.where("trade_style_id" => trade_style_id).count
+    "#{(trades / search_user_virtual_currency_trades.count.to_f * 100).floor(1)}%"
   end
 
 end
