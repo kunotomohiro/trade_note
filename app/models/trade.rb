@@ -31,4 +31,10 @@ class Trade < ApplicationRecord
     
   end
 
+  def search_trades_between_year
+    from  = Time.now.at_beginning_of_year
+    to    = Time.now.at_end_of_year
+    Trade.where(exit_time: from...to)
+  end
+
 end

@@ -1,7 +1,7 @@
 <div>
-  <p class="font-weight-bold m-0">全体勝率</p>
+  <p class="font-weight-bold m-0 mt-5">年間勝率</p>
   <div class="text-right mr-xl-4 p-win-rate__list">
-    <% if @fx.search_user_fx_trades.present? %>
+    <% if @fx.search_user_fx_trades_in_year.present? %>
       <span @click="toggleDisplayWinRate(0)">Fx</span>
     <% end %>
     <% if @stock.search_user_stock_trades.present? %>
@@ -12,9 +12,9 @@
     <% end %>
   </div>
 </div>
-<% if @fx.search_user_fx_trades.present? %>
+<% if @fx.search_user_fx_trades_in_year.present? %>
   <div class="d-none" :class="{ 'd-block' : displayWinRate[0] }">
-    <p class="m-0">FX トレード数 <%= @fx.search_user_fx_trades.count %></p>
+    <p class="m-0">FX トレード数 <%= @fx.search_user_fx_trades_in_year.count %></p>
     <table>
       <tr>
         <th>全体</th>
