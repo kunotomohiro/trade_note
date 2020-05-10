@@ -1,15 +1,15 @@
 <div>
   <p class="font-weight-bold m-0">全体勝率</p>
 </div>
-<% if @fx.search_user_fx_trades.present? %>
+<% if @fx.user_trades.present? %>
   <div>
     <div class="d-flex mt-3">
-      <p class="m-0 mr-5">Fx トレード数 <%= @fx.search_user_fx_trades.count %></p>
+      <p class="m-0 mr-5">Fx トレード数 <%= @fx.user_trades.count %></p>
       <p class="m-0 ml-5">
         <span v-if="displayWinRate[0]" @click="toggleDisplayWinRate(0)">
           非表示
         </span>
-         <span v-else @click="toggleDisplayWinRate(0)">
+        <span v-else @click="toggleDisplayWinRate(0)">
           表示
         </span>
       </p>
@@ -33,15 +33,15 @@
   </div>
 <% end %>
 
-<% if @stock.search_user_stock_trades.present? %>
+<% if @stock.user_trades.present? %>
   <div>
     <div class="d-flex mt-3">
-      <p class="m-0 mr-5">株 トレード数 <%= @stock.search_user_stock_trades.count %></p>
+      <p class="m-0 mr-5">株 トレード数 <%= @stock.user_trades.count %></p>
       <p class="m-0 ml-5">
         <span v-if="displayWinRate[1]" @click="toggleDisplayWinRate(1)">
           非表示
         </span>
-         <span v-else @click="toggleDisplayWinRate(1)">
+        <span v-else @click="toggleDisplayWinRate(1)">
           表示
         </span>
       </p>
@@ -65,10 +65,10 @@
   </div>
 <% end %>
 
-<% if @virtual_currency.search_user_virtual_currency_trades.present? %>
+<% if @virtual_currency.user_trades.present? %>
   <div>
     <div class="d-flex mt-3">
-      <p class="m-0">仮想通貨 トレード数 <%= @virtual_currency.search_user_virtual_currency_trades.count %></p>
+      <p class="m-0">仮想通貨 トレード数 <%= @virtual_currency.user_trades.count %></p>
       <p class="m-0 ml-5">
         <span v-if="displayWinRate[2]" @click="toggleDisplayWinRate(2)">
           非表示
