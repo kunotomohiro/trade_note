@@ -50,18 +50,4 @@ class Trade < ApplicationRecord
     "#{(trades / user_trades.count.to_f * 100).floor(1)}%"
   end
 
-  def search_trades_between_year
-    from  = Time.now.at_beginning_of_year
-    to    = Time.now.at_end_of_year
-    Trade.where(exit_time: from...to)
-  end
-
-  def user_trades_in_year
-    search_trades_between_year.where("(user_id = ?) and (trade_category_id = ?)", current_user_id, trade_category_id)
-  end
-
-  def win_number_of_trades_in_year
-    search_trades_between_year.search_trades_between_year.where("result" => "資産増")
-  end
-
 end
