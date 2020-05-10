@@ -1,21 +1,20 @@
 <div>
   <p class="font-weight-bold m-0">全体勝率</p>
-  <div class="text-right mr-xl-4 p-win-rate__list">
-    <% if @fx.search_user_fx_trades.present? %>
-      <span @click="toggleDisplayWinRate(0)">Fx</span>
-    <% end %>
-    <% if @stock.search_user_stock_trades.present? %>
-      <span @click="toggleDisplayWinRate(1)">株</span>
-    <% end %>
-    <% if @virtual_currency.search_user_virtual_currency_trades.present? %>
-      <span @click="toggleDisplayWinRate(2)">仮想通貨</span>
-    <% end %>
-  </div>
 </div>
 <% if @fx.search_user_fx_trades.present? %>
-  <div class="d-none" :class="{ 'd-block' : displayWinRate[0] }">
-    <p class="m-0">FX トレード数 <%= @fx.search_user_fx_trades.count %></p>
-    <table>
+  <div>
+    <div class="d-flex mt-3">
+      <p class="m-0 mr-5">Fx トレード数 <%= @fx.search_user_fx_trades.count %></p>
+      <p class="m-0 ml-5">
+        <span v-if="displayWinRate[0]" @click="toggleDisplayWinRate(0)">
+          非表示
+        </span>
+         <span v-else @click="toggleDisplayWinRate(0)">
+          表示
+        </span>
+      </p>
+    </div>
+    <table class="d-none" :class="{ 'd-block' : displayWinRate[0] }">
       <tr>
         <th>全体</th>
         <th>デイ</th>
@@ -35,9 +34,19 @@
 <% end %>
 
 <% if @stock.search_user_stock_trades.present? %>
-  <div class="d-none" :class="{ 'd-block' : displayWinRate[1] }">
-    <p class="m-0 mt-4">株 トレード数 <%= @stock.search_user_stock_trades.count %></p>
-    <table>
+  <div>
+    <div class="d-flex mt-3">
+      <p class="m-0 mr-5">株 トレード数 <%= @stock.search_user_stock_trades.count %></p>
+      <p class="m-0 ml-5">
+        <span v-if="displayWinRate[1]" @click="toggleDisplayWinRate(1)">
+          非表示
+        </span>
+         <span v-else @click="toggleDisplayWinRate(1)">
+          表示
+        </span>
+      </p>
+    </div>
+    <table class="d-none" :class="{ 'd-block' : displayWinRate[1] }">
       <tr>
         <th>全体</th>
         <th>デイ</th>
@@ -57,9 +66,19 @@
 <% end %>
 
 <% if @virtual_currency.search_user_virtual_currency_trades.present? %>
-  <div class="d-none" :class="{ 'd-block' : displayWinRate[2] }">
-    <p class="m-0  mt-4">仮想通貨 トレード数 <%= @virtual_currency.search_user_virtual_currency_trades.count %></p>
-    <table>
+  <div>
+    <div class="d-flex mt-3">
+      <p class="m-0">仮想通貨 トレード数 <%= @virtual_currency.search_user_virtual_currency_trades.count %></p>
+      <p class="m-0 ml-5">
+        <span v-if="displayWinRate[2]" @click="toggleDisplayWinRate(2)">
+          非表示
+        </span>
+        <span v-else @click="toggleDisplayWinRate(2)">
+          表示
+        </span>
+      </p>
+    </div>
+    <table class="d-none" :class="{ 'd-block' : displayWinRate[2] }">
       <tr>
         <th>全体</th>
         <th>デイ</th>
