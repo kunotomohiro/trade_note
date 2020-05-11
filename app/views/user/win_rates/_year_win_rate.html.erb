@@ -1,0 +1,98 @@
+<div class="mt-5">
+  <p class="font-weight-bold m-0">年内勝率</p>
+</div>
+<% if @fx.user_trades_in_year.present? %>
+  <div>
+    <div class="d-flex mt-3">
+      <p class="m-0 mr-5">Fx トレード数 <%= @fx.user_trades_in_year.count %></p>
+      <p class="m-0 ml-5">
+        <span v-if="displayWinRate[0]" @click="toggleDisplayWinRate(0)">
+          非表示
+        </span>
+        <span v-else @click="toggleDisplayWinRate(0)">
+          表示
+        </span>
+      </p>
+    </div>
+    <table class="d-none" :class="{ 'd-block' : displayWinRate[0] }">
+      <tr>
+        <th>全体</th>
+        <th>デイ</th>
+        <th>スイング</th>
+        <th>スキャルピング</th>
+      </tr>
+
+      <tr>
+        <td><%= @fx.total_win_rate_in_year %></td>
+        <td><%= @fx.trade_style_win_rate_in_year(1) %></td>
+        <td><%= @fx.trade_style_win_rate_in_year(2) %></td>
+        <td><%= @fx.trade_style_win_rate_in_year(3) %></td>
+      </tr>
+
+    </table>
+  </div>
+<% end %>
+
+<% if @stock.user_trades_in_year.present? %>
+  <div>
+    <div class="d-flex mt-3">
+      <p class="m-0 mr-5">株 トレード数 <%= @stock.user_trades_in_year.count %></p>
+      <p class="m-0 ml-5">
+        <span v-if="displayWinRate[1]" @click="toggleDisplayWinRate(1)">
+          非表示
+        </span>
+        <span v-else @click="toggleDisplayWinRate(1)">
+          表示
+        </span>
+      </p>
+    </div>
+    <table class="d-none" :class="{ 'd-block' : displayWinRate[1] }">
+      <tr>
+        <th>全体</th>
+        <th>デイ</th>
+        <th>スイング</th>
+        <th>スキャルピング</th>
+      </tr>
+
+      <tr>
+        <td><%= @stock.total_win_rate_in_year %></td>
+        <td><%= @stock.trade_style_win_rate_in_year(1) %></td>
+        <td><%= @stock.trade_style_win_rate_in_year(2) %></td>
+        <td><%= @stock.trade_style_win_rate_in_year(3) %></td>
+      </tr>
+
+    </table>
+  </div>
+<% end %>
+
+<% if @virtual_currency.user_trades_in_year.present? %>
+  <div>
+    <div class="d-flex mt-3">
+      <p class="m-0">仮想通貨 トレード数 <%= @virtual_currency.user_trades_in_year.count %></p>
+      <p class="m-0 ml-5">
+        <span v-if="displayWinRate[2]" @click="toggleDisplayWinRate(2)">
+          非表示
+        </span>
+        <span v-else @click="toggleDisplayWinRate(2)">
+          表示
+        </span>
+      </p>
+    </div>
+    <table class="d-none" :class="{ 'd-block' : displayWinRate[2] }">
+      <tr>
+        <th>全体</th>
+        <th>デイ</th>
+        <th>スイング</th>
+        <th>スキャルピング</th>
+      </tr>
+
+      <tr>
+        <td><%= @virtual_currency.total_win_rate_in_year %></td>
+        <td><%= @virtual_currency.trade_style_win_rate_in_year(1) %></td>
+        <td><%= @virtual_currency.trade_style_win_rate_in_year(2) %></td>
+        <td><%= @virtual_currency.trade_style_win_rate_in_year(3) %></td>
+      </tr>
+
+    </table>
+  </div>
+<% end %>
