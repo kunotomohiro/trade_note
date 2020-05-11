@@ -53,7 +53,7 @@ class Trade < ApplicationRecord
   def search_trades_in_year
     from  = Time.now.at_beginning_of_year
     to    = Time.now.at_end_of_year
-    Trade.where(exit_time: from...to)
+    Trade.where(exit_time: from..to)
   end
 
   def user_trades_in_year
