@@ -1,9 +1,9 @@
-<div class="mt-5">
-  <p class="font-weight-bold m-0">年内勝率</p>
-</div>
-<% if @fx.user_trades_in_year.present? %>
-  <div>
-    <div class="d-flex mt-3">
+<div class="col-12">
+  <div class="mt-5">
+    <p class="font-weight-bold m-0">年内勝率</p>
+  </div>
+  <% if @fx.user_trades_in_year.present? %>
+    <div class="d-flex justify-content-between mt-3">
       <p class="m-0 mr-5">Fx トレード数 <%= @fx.user_trades_in_year.count %></p>
       <p class="m-0 ml-5">
         <span v-if="displayWinRate[0]" @click="toggleDisplayWinRate(0)">
@@ -30,12 +30,10 @@
       </tr>
 
     </table>
-  </div>
-<% end %>
+  <% end %>
 
-<% if @stock.user_trades_in_year.present? %>
-  <div>
-    <div class="d-flex mt-3">
+  <% if @stock.user_trades_in_year.present? %>
+    <div class="d-flex justify-content-between mt-3">
       <p class="m-0 mr-5">株 トレード数 <%= @stock.user_trades_in_year.count %></p>
       <p class="m-0 ml-5">
         <span v-if="displayWinRate[1]" @click="toggleDisplayWinRate(1)">
@@ -62,12 +60,10 @@
       </tr>
 
     </table>
-  </div>
-<% end %>
+  <% end %>
 
-<% if @virtual_currency.user_trades_in_year.present? %>
-  <div>
-    <div class="d-flex mt-3">
+  <% if @virtual_currency.user_trades_in_year.present? %>
+    <div class="d-flex justify-content-between mt-3">
       <p class="m-0">仮想通貨 トレード数 <%= @virtual_currency.user_trades_in_year.count %></p>
       <p class="m-0 ml-5">
         <span v-if="displayWinRate[2]" @click="toggleDisplayWinRate(2)">
@@ -94,5 +90,5 @@
       </tr>
 
     </table>
-  </div>
-<% end %>
+  <% end %>
+</div>
