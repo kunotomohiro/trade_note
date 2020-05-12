@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   namespace :user do
     authenticate :user do
       resource  :user_profile
-      resources :win_rates, only: :index
+      resources :trade_win_rates, only: :index
       resources :trades do
       end
     end
