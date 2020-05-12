@@ -13,7 +13,7 @@ class Trade < ApplicationRecord
 
   include Trade::Searchable
 
-  attr_accessor :current_user_id, :trade_category_id
+  attr_accessor :current_user_id
 
   def base64upload(file)
 
@@ -39,17 +39,6 @@ class Trade < ApplicationRecord
     user_trades.where("result" => "資産増")
   end
 
-  def total_win_rate
-    return "0%" if win_number_of_trades.count === 0
-    "#{(win_number_of_trades.count / user_trades.count.to_f * 100).floor(1)}%"
-  end
-
-  def trade_style_win_rate(trade_style_id)
-    return "0%" if win_number_of_trades.count === 0
-    trades = win_number_of_trades.where("trade_style_id" => trade_style_id).count
-    "#{(trades / user_trades.count.to_f * 100).floor(1)}%"
-  end
-
   def search_trades_in_year
     from  = Time.now.at_beginning_of_year
     to    = Time.now.at_end_of_year
@@ -62,17 +51,6 @@ class Trade < ApplicationRecord
 
   def win_number_of_trades_in_year
     user_trades_in_year.where("result" => "資産増")
-  end
-
-  def total_win_rate_in_year
-    return "0%" if win_number_of_trades_in_year.count === 0
-    "#{(win_number_of_trades_in_year.count / user_trades_in_year.count.to_f * 100).floor(1)}%"
-  end
-
-  def trade_style_win_rate_in_year(trade_style_id)
-    return "0%" if win_number_of_trades_in_year.count === 0
-    trades = win_number_of_trades_in_year.where("trade_style_id" => trade_style_id).count
-    "#{(trades / user_trades_in_year.count.to_f * 100).floor(1)}%"
   end
 
 end
