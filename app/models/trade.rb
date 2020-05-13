@@ -40,8 +40,8 @@ class Trade < ApplicationRecord
   end
 
   def search_trades_in_year
-    from  = Time.new(year.to_i, 1, 1)
-    to    = Time.new(year.to_i, 12, 31)
+    from  = Time.new(year, 1, 1)
+    to    = Time.new(year, 12, 31)
     Trade.where(exit_time: from..to)
   end
 
