@@ -1,6 +1,13 @@
 <div class="col-12">
-  <div class="mt-5">
-    <p class="font-weight-bold m-0">年内勝率</p>
+  <div class="mt-5 d-md-flex justify-content-between">
+    <p class="font-weight-bold mb-3 m-0">年内勝率</p>
+    <%= form_with model: [:user, @fx], url: user_trade_win_rates_path, method: :get, local: true do |f| %>
+      <div class="d-flex form-group">
+        <%= f.number_field :year, class: "form-control" %>
+        <%= f.submit "この年で検索", class: "btn c-devise-form__submit-btn ml-3" %>
+        <%= link_to "リセット", user_trade_win_rates_path, class: "btn p-trade__card__delete-btn bg-black text-white ml-3" %>
+      </div>
+    <% end %>
   </div>
   <% if @fx.user_trades_in_year.present? %>
     <div class="d-flex justify-content-between mt-3">
@@ -19,7 +26,7 @@
         <th>全体</th>
         <th>デイ</th>
         <th>スイング</th>
-        <th>スキャルピング</th>
+        <th>スキャル</th>
       </tr>
 
       <tr>
@@ -49,7 +56,7 @@
         <th>全体</th>
         <th>デイ</th>
         <th>スイング</th>
-        <th>スキャルピング</th>
+        <th>スキャル</th>
       </tr>
 
       <tr>
@@ -79,7 +86,7 @@
         <th>全体</th>
         <th>デイ</th>
         <th>スイング</th>
-        <th>スキャルピング</th>
+        <th>スキャル</th>
       </tr>
 
       <tr>
