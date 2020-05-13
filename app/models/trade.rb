@@ -13,7 +13,7 @@ class Trade < ApplicationRecord
 
   include Trade::Searchable
 
-  attr_accessor :current_user_id
+  attr_accessor :current_user_id, :year
 
   def base64upload(file)
 
@@ -40,8 +40,8 @@ class Trade < ApplicationRecord
   end
 
   def search_trades_in_year
-    from  = Time.now.at_beginning_of_year
-    to    = Time.now.at_end_of_year
+    from  = Time.new(year.to_i, 1, 1)
+    to    = Time.new(year.to_i, 12, 31)
     Trade.where(exit_time: from..to)
   end
 
