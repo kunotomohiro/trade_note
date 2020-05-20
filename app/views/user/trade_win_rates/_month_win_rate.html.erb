@@ -1,0 +1,107 @@
+<div class="col-12">
+  <div class="mt-5 d-xl-flex justify-content-between">
+    <p class="font-weight-bold mb-3 m-0">月間勝率</p>
+    <%= form_with model: [:user, @fx_in_month], url: user_trade_win_rates_path, method: :get, local: true do |f| %>
+      <div class="d-md-flex form-group">
+        <div class="d-flex form-group">
+          <%= f.number_field :month_rate_year, class: "form-control" %>
+          <div class="mr-1 ml-1 mt-1 h5">/</div>
+          <%= f.number_field :month, class: "form-control" %>
+        </div>
+        <div class="d-flex form-group">
+          <%= f.submit "この月で検索", class: "btn c-devise-form__submit-btn ml-md-3" %>
+          <%= link_to "リセット", user_trade_win_rates_path, class: "btn p-trade__card__delete-btn bg-black text-white ml-3" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <% if @fx_in_month.user_trades_in_month.present? %>
+    <div class="d-flex justify-content-between mt-3">
+      <p class="m-0 mr-5">Fx トレード数 <%= @fx_in_month.user_trades_in_month.count %></p>
+      <p class="m-0 ml-5">
+        <span v-if="displayWinRate[0]" @click="toggleDisplayWinRate(0)">
+          非表示
+        </span>
+        <span v-else @click="toggleDisplayWinRate(0)">
+          表示
+        </span>
+      </p>
+    </div>
+    <table class="d-none" :class="{ 'd-block' : displayWinRate[0] }">
+      <tr>
+        <th>全体</th>
+        <th>デイ</th>
+        <th>スイング</th>
+        <th>スキャル</th>
+      </tr>
+
+      <tr>
+        <td><%= @fx_in_month.total_win_rate_in_month %></td>
+        <td><%= @fx_in_month.trade_style_win_rate_in_month(1) %></td>
+        <td><%= @fx_in_month.trade_style_win_rate_in_month(2) %></td>
+        <td><%= @fx_in_month.trade_style_win_rate_in_month(3) %></td>
+      </tr>
+
+    </table>
+  <% end %>
+
+  <% if @stock_in_month.user_trades_in_month.present? %>
+    <div class="d-flex justify-content-between mt-3">
+      <p class="m-0 mr-5">株 トレード数 <%=@stock_in_month.user_trades_in_month.count %></p>
+      <p class="m-0 ml-5">
+        <span v-if="displayWinRate[1]" @click="toggleDisplayWinRate(1)">
+          非表示
+        </span>
+        <span v-else @click="toggleDisplayWinRate(1)">
+          表示
+        </span>
+      </p>
+    </div>
+    <table class="d-none" :class="{ 'd-block' : displayWinRate[1] }">
+      <tr>
+        <th>全体</th>
+        <th>デイ</th>
+        <th>スイング</th>
+        <th>スキャル</th>
+      </tr>
+
+      <tr>
+        <td><%=@stock_in_month.total_win_rate_in_month %></td>
+        <td><%=@stock_in_month.trade_style_win_rate_in_month(1) %></td>
+        <td><%=@stock_in_month.trade_style_win_rate_in_month(2) %></td>
+        <td><%=@stock_in_month.trade_style_win_rate_in_month(3) %></td>
+      </tr>
+
+    </table>
+  <% end %>
+
+  <% if @virtual_currency_in_month.user_trades_in_month.present? %>
+    <div class="d-flex justify-content-between mt-3">
+      <p class="m-0">仮想通貨 トレード数 <%= @virtual_currency_in_month.user_trades_in_month.count %></p>
+      <p class="m-0 ml-5">
+        <span v-if="displayWinRate[2]" @click="toggleDisplayWinRate(2)">
+          非表示
+        </span>
+        <span v-else @click="toggleDisplayWinRate(2)">
+          表示
+        </span>
+      </p>
+    </div>
+    <table class="d-none" :class="{ 'd-block' : displayWinRate[2] }">
+      <tr>
+        <th>全体</th>
+        <th>デイ</th>
+        <th>スイング</th>
+        <th>スキャル</th>
+      </tr>
+
+      <tr>
+        <td><%= @virtual_currency_in_month.total_win_rate_in_month %></td>
+        <td><%= @virtual_currency_in_month.trade_style_win_rate_in_month(1) %></td>
+        <td><%= @virtual_currency_in_month.trade_style_win_rate_in_month(2) %></td>
+        <td><%= @virtual_currency_in_month.trade_style_win_rate_in_month(3) %></td>
+      </tr>
+
+    </table>
+  <% end %>
+</div>
