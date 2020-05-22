@@ -50,7 +50,7 @@ RSpec.describe "Trades", type: :request do
   # createはbase64のところをどう書けばいいか分からないので一旦保留
 
   describe "#show" do
-    context "自分のトレードページの場合" do
+    context "自分のトレードの場合" do
       let(:trade) { create(:trade) }
       let(:user_profile) { create(:user_profile, user: trade.user) }
       it "200ステータスを返す" do
@@ -66,7 +66,7 @@ RSpec.describe "Trades", type: :request do
       let(:trade) { create(:trade, user: other_user) }
       it "user_trades_pathにリダイレクトされる" do
         sign_in user
-        get user_trade_url(trade.id)
+        get user_trade_url(trade)
         expect(response).to redirect_to user_trades_path
       end
     end
@@ -78,7 +78,7 @@ RSpec.describe "Trades", type: :request do
       let(:user_profile) { create(:user_profile, user: trade.user) }
       it "200ステータスを返す" do
         sign_in user_profile.user
-        get edit_user_trade_url(trade.id)
+        get edit_user_trade_url(trade)
         expect(response).to have_http_status "200"
       end
     end
@@ -89,7 +89,7 @@ RSpec.describe "Trades", type: :request do
       let(:trade) { create(:trade, user: other_user) }
       it "user_trades_pathにリダイレクトされる" do
         sign_in user
-        get edit_user_trade_url(trade.id)
+        get edit_user_trade_url(trade)
         expect(response).to redirect_to user_trades_path
       end
     end

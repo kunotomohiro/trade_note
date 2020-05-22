@@ -30,12 +30,7 @@ class User::TradesController < User::ApplicationController
     end
   end
 
-  def show
-    respond_to do |format|
-      format.html
-      format.json { render :json => { trade: @trade } }
-    end
-  end
+  def show;end
 
   def edit
     respond_to do |format|
