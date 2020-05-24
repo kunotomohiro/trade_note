@@ -1,3 +1,4 @@
+require 'rails_helper'
 RSpec.describe Trade, type: :model do
   describe '年内勝率メソッドテスト' do
     let(:trade)                         { create(:trade2) }

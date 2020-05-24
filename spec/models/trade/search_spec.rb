@@ -1,3 +1,4 @@
+require 'rails_helper'
 RSpec.describe Trade, type: :model do
   describe '検索メソッドテスト' do
     let(:trade) { create(:trade) }
