@@ -8,7 +8,9 @@ window.onload = function(){
     el: "#win_rate",
     data: {
       displayWinRate: [true, true, true],
-      fx: []
+      fx: [],
+      stock: [],
+      virtual_currency: []
     },
     methods: {
       toggleDisplayWinRate(trade_category) {
@@ -25,6 +27,8 @@ window.onload = function(){
         .set('Accept', 'application/json')
         .end(function(error, data){
           win_rate.$data.fx = data.body.fx
+          win_rate.$data.stock = data.body.stock
+          win_rate.$data.virtual_currency = data.body.virtual_currency
         })
       }
     }
