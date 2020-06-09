@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resource  :initialisations, only: :show
-      resources :trade_win_rate,  only: :index
+      resources :trade_win_rates, only: :index
     end
   end
 end
